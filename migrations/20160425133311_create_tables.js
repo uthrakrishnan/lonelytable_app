@@ -2,7 +2,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('tables', t=>{
     t.increments(),
-    t.integer('venue_id').unsigned().index().references('venues.id').notnullable(),
+    t.integer('venue_id').unsigned().index().references('venues.id').notNullable(),
     t.text('table_name'),
     t.integer('cost'),
     t.integer('maxCapacity'),
