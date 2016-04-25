@@ -1,3 +1,5 @@
+require('dotenv').load()
+
 const express = require('express');
 const app = express();
 
@@ -15,7 +17,6 @@ app.set('view engine', 'pug');
 
 app.disable('x-powered-by');
 
-// require(“dotenv”).load()
 // app.use(session({secret: preocess.env.SECRET})
 
 //HOME static page
