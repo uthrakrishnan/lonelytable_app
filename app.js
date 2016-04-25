@@ -19,6 +19,11 @@ app.disable('x-powered-by');
 
 // app.use(session({secret: preocess.env.SECRET})
 
+
+app.use('/venues', routes.venues)
+app.use('/tables', routes.tables)
+app.use('/tables/:table_id/reservations', routes.reservations)
+
 //HOME static page
 app.get("/", function(req, res){
   res.render('index');
