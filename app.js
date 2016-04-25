@@ -13,7 +13,7 @@ const routes = require('./routes/index');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
 app.use(morgan('dev'));
-app.set('view engine', 'pug');
+app.set('view engine', 'jade');
 
 app.disable('x-powered-by');
 
