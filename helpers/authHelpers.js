@@ -16,7 +16,7 @@ module.exports = {
 
 	ensureAuth: (req, res, next) =>{
 
-		if(req.originalUrl === "/auth/login") {
+		if(req.originalUrl === "/auth/facebook") {
 			return next();
 		}
 		if(req.isAuthenticated){
@@ -24,7 +24,7 @@ module.exports = {
 		}
 		else{
 			req.flash('loginMessage', 'Please log in');
-			res.redirect('/auth/login');
+			res.redirect('/auth/facebook');
 		}
 	},
 

@@ -41,12 +41,30 @@ passport.deserializeUser((id, done)=>{
 
 router.get('/facebook', passport.authenticate('facebook'));
 
-router.get('/facebook/callback', passport.authenticate('facebook', {
-	successRedirect: '/users',
-	failureRedirect: '/auth/login',
-	failureFlash: "Failed to log in with Facebook",
-  	successFlash: "Welcome back!"
-}));
+router.get('/auth/facebook/callback', function(req,res,next){
+  passport.authenticate('facebook',function(err, user) {
+    
+    if(err) return next(err)
+    else {
+      req.logIn(user, function(err) {
+      if(err){
+        req.flash("loginMessage", err)
+        res.redirect('/login');
+      }
+      else{
+
+        // AFTER MORE SETUP, FIND WHAT 'user' is and send info to further add info for databse
+
+        eval(locus)
+        knex('users').where('id', user)
+        res.redirect('/users');
+      }
+    })
+      // Successful authentication, redirect home.
+
+    }
+  })(req, res, next)
+});
 
 router.get('/login', (req, res)=>{
 	res.render('auth/login', {message: req.flash('error')});
