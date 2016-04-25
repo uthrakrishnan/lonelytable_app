@@ -4,6 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments(),
     table.text('username').unique(),
     table.text('password'),
+    table.text('alias'),
     table.text('profile_pic')
     table.date('dob')
     table.text('blurb')
