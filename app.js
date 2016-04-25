@@ -7,11 +7,11 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const morgan = require('morgan');
 const session = require('cookie-session');
+const routes = require('./routes/index');
 
-// const userRoutes = require(“./routes/users”);
 
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(methodOverride("__method"));
+app.use(methodOverride("_method"));
 app.use(morgan('dev'));
 app.set('view engine', 'pug');
 
@@ -36,13 +36,13 @@ app.get('/contact', function(req, res) {
 
 //LOGIN static page
 app.get('/login', function(req, res) {
-  res.render('login');
+  res.redirect('/auth/facebook');
 });
 
 //PAYMENT static page
-app.get('/payment', function(req, res) {
-  res.render('payment');
-});
+// app.get('/payment', function(req, res) {
+//   res.render('payment');
+// });
 
 //404 ERROR page (ALWAYS Keep this as the last route)
 app.get('*', function(req, res){
