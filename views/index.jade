@@ -1,41 +1,45 @@
 //-index.pug 
 //-APP HOMEPAGE
 
-//- doctype html
-//- html
-//-   include includes/head.pug
-    
-//-     include includes/foot.pug
-
 extends ./layout.jade
 
 block content
- h1 Lonely Table
 
- p Welocme to Lonely Table, the place for people without a lot of friends, but too much money.
+ //- p Welocme to LonelyTable, the place for people without a lot of friends, but too much money.
 
-
- div#carousel-example-generic.carousel.slide(data-ride='carousel')
+ //- div#welcomeTitle
+ //-  p LonelyTable
+ div#homepageCarousel.carousel.slide(data-ride='carousel')
   // Indicators
   ol.carousel-indicators
-    li.active(data-target='#carousel-example-generic', data-slide-to='0')
-    li(data-target='#carousel-example-generic', data-slide-to='1')
-    li(data-target='#carousel-example-generic', data-slide-to='2')
+    li.active(data-target='#homepageCarousel', data-slide-to='0')
+    li(data-target='#homepageCarousel', data-slide-to='1')
+    li(data-target='#homepageCarousel', data-slide-to='2')
+    li(data-target='#homepageCarousel', data-slide-to='3')
   // Wrapper for slides
   .carousel-inner(role='listbox')
     .item.active
-      img(src='...', alt='...')
-      .carousel-caption
-        | ...
+      img(src='/images/lasers.jpg', alt='LonelyTable')
+      #carouselCaption.carousel-caption
+        |LonelyTable
     .item
-      img(src='...', alt='...')
-      .carousel-caption
-        | ...
+      img(src='/images/club1.jpg', alt='LonelyTable')
+      #carouselCaption.carousel-caption
+        |for a great night out
+    .item
+      img(src='/images/lasers.jpg', alt='LonelyTable')
+      #carouselCaption.carousel-caption
+        |friends new and old
+    .item
+      img(src='/images/club1.jpg', alt='LonelyTable')
+      #carouselCaption.carousel-caption
+        |sign in with Facebook
     |     ...
   // Controls
-  a.left.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
+  a.left.carousel-control(href='#homepageCarousel', role='button', data-slide='prev')
     span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
     span.sr-only Previous
-  a.right.carousel-control(href='#carousel-example-generic', role='button', data-slide='next')
+  a.right.carousel-control(href='#homepageCarousel', role='button', data-slide='next')
     span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
     span.sr-only Next
+      p text goes here blah blah blah
