@@ -1,0 +1,72 @@
+extends ../layout.jade
+
+block content
+	h1 Venues
+
+	div 
+		div#filterDiv(class='col col-xs-4')
+			h3 Filters
+
+			form(action='/venues/filter' method='GET')
+				input(type="text" name='filter[venueName]' placeholder='venue name OR key words')
+				br
+				input(type="integer" name='filter[seatsNeeded]' placeholder='How Many Seats do you need?')
+				br
+				//- input(type="integer" name='filter[tables]' placeholder='tables available')
+				input(type="text" name='filter[maxPledge]' placeholder='max $ you want to spend')
+				//- input(type="checkbox" name='filter[tableAvailable]') 
+				h4 Table Status
+				form
+					label Open
+						input(type="radio" name='filter[status]' value='open')
+					br
+					label Pending
+						input(type="radio" name='filter[status]' value='pending')
+					br
+					label Closed
+						input(type="radio" name='filter[status]' value='closed')
+					br
+				h4 Number of Reviews
+				form
+					label	<10
+						input(type="checkbox" name='filter[reviews]' value='<10')
+					br
+					label 10 - 100
+						input(type="checkbox" name='filter[reviews]' value='10-100')
+					br
+					label >100
+						input(type="checkbox" name='filter[reviews]' value='>100')
+					br
+				h4 Stars
+				form
+					label 5
+						input(type="radio" name='filter[stars]' value='5')
+					br
+					label 4
+						input(type="radio" name='filter[stars]' value='4')
+					br
+					label 3
+						input(type="radio" name='filter[stars]' value='3')
+					br
+					label 2
+						input(type="radio" name='filter[stars]' value='2')
+					br
+					label 1
+						input(type="radio" name='filter[stars]' value='1')
+					br
+
+		div#venueListDiv(class='col col-xs-8 offset-xs-4')
+			div#info(class='col-xs-4')
+				h3 INFO
+				each venue in venues
+					p Venue: 
+					p maxCap:
+					p tables available: 
+					p min price at max cap for cheapest table:
+					p # of reviews: 
+					p Stars: 
+					p
+						a(href='/venues/#{__(venueID)__}')
+			div#pic
+				h3 PIC
+				img(src="../../public/images/club1.JPG")

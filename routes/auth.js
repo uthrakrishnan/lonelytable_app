@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router({mergeParams: true});
 const knex = require('../db/knex');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 const helpers = require('../helpers/authHelpers');
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
@@ -41,7 +41,7 @@ passport.deserializeUser((id, done)=>{
 
 router.get('/facebook', passport.authenticate('facebook'));
 
-router.get('/auth/facebook/callback', function(req,res,next){
+router.get('/facebook/callback', function(req,res,next){
   passport.authenticate('facebook',function(err, user) {
     
     if(err) return next(err)

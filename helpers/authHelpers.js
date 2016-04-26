@@ -8,7 +8,7 @@ module.exports = {
 		else {
 		
 			res.locals.currentUser = req.user;
-			delete res.locals.currentUser.password;
+			// delete res.locals.currentUser.password;
 			return next();
 		}
 	},
