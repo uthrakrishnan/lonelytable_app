@@ -4,7 +4,7 @@ block content
 	h1 Venues
 
 	div 
-		div#filterDiv(style='background-color:rgba(0, 0, 255, 0.3)' class='col col-xs-4')
+		div#filterDiv(class='col col-xs-4')
 			h3 Filters
 
 			form(action='/venues/filter' method='GET')
@@ -55,7 +55,7 @@ block content
 						input(type="radio" name='filter[stars]' value='1')
 					br
 
-		div#venueListDiv(style='background-color:rgba(0, 0, 255, 0.5)' class='col col-xs-8 offset-xs-4')
+		div#venueListDiv(class='col col-xs-8 offset-xs-4')
 			div#info(class='col-xs-4')
 				h3 INFO
 				each venue in venues

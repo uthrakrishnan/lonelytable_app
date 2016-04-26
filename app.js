@@ -13,6 +13,7 @@ const routes = require('./routes/index');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
 app.use(morgan('dev'));
+app.use(express.static(__dirname + "/public"));
 app.set('view engine', 'jade');
 
 app.disable('x-powered-by');
