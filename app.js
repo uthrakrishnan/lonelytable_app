@@ -1,4 +1,4 @@
-// require('dotenv').load()
+require('dotenv').load()
 
 const express = require('express');
 const app = express();
@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const morgan = require('morgan');
 const session = require('cookie-session');
-// const routes = require('./routes/index');
+const routes = require('./routes/index');
 
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -18,12 +18,12 @@ app.set('view engine', 'jade');
 
 app.disable('x-powered-by');
 
-// app.use(session({secret: process.env.SECRET}));
+app.use(session({secret: process.env.SECRET}));
 
-// app.use('/auth', routes.auth)
-// app.use('/venues', routes.venues)
-// app.use('/tables', routes.tables)
-// app.use('/tables/:table_id/reservations', routes.reservations)
+app.use('/auth', routes.auth)
+app.use('/venues', routes.venues)
+app.use('/tables', routes.tables)
+app.use('/tables/:table_id/reservations', routes.reservations)
 
 //HOME static page
 app.get("/", function(req, res){
