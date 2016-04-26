@@ -7,7 +7,9 @@ exports.up = function(knex, Promise) {
     t.integer('cost'),
     t.integer('maxCapacity'),
     t.text('description'),
-    t.text('table_status')
+    t.text('table_status'),
+    t.integer('reviews'),
+    t.integer('stars')
   })
 };
 
