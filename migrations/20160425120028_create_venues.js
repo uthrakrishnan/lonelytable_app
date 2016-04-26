@@ -11,7 +11,9 @@ exports.up = function(knex, Promise) {
     table.text('music'),
     table.text('clientele'),
     table.text('tableMapPic'),
-    table.text('description')
+    table.text('description'),
+    table.integer('reviews'),
+    table.integer('stars')
   })
 };
 
