@@ -10,10 +10,25 @@
 }
 
 #venueListDiv {
-	background-color: rgba(0, 0, 255, 0.5);
+	position: relative;
+	left: 30px;
+	top: -4px;
+	background-color: rgba(0, 0, 255, 0.2);
+	border: solid white 5px;
 }
 
 .dropdown {
 	position: absolute;
 	left: 380px;
+}
+
+img {
+	position: relative;
+	left: 26px;
+	height: 300px;
+	width: 486px;
+}
+
+#info {
+	/*border-right: black solid 5px*/
 }
