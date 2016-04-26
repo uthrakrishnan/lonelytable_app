@@ -11,7 +11,7 @@ head
 
  script(src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous")
  script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous")
- link(rel='stylesheet' href='../public/stylesheets/style.css')
+ link(rel='stylesheet' href='stylesheets/style.css')
 body
  html
   body
@@ -24,7 +24,7 @@ body
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='/') LonelyPlanet
+          a.navbar-brand(href='/') Lonely Table
         // Collect the nav links, forms, and other content for toggling
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           ul.nav.navbar-nav
@@ -33,42 +33,26 @@ body
                 //- span.sr-only (current)
             //- li
             //-   a(href='/tables') Talbes
-            li.dropdown
+          //- form.navbar-form.navbar-left(role='search')
+          //-   .form-group
+          //-     input.form-control(type='text', placeholder='Search')
+          //-   button.btn.btn-default(type='submit') Submit
+          ul.nav.navbar-nav
+            li.dropdown.nav-pill
               a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                | Dropdown 
+                | Your Account 
                 span.caret
               ul.dropdown-menu
                 li
-                  a(href='#') Action
+                  a(href='/users/#{}') My Profile 
+                  //- user.id
                 li
-                  a(href='#') Another action
+                  a(href='#') My Reservations
                 li
-                  a(href='#') Something else here
+                  a(href='#') Inbox
                 li.divider(role='separator')
                 li
-                  a(href='#') Separated link
-                li.divider(role='separator')
-                li
-                  a(href='#') One more separated link
-          form.navbar-form.navbar-left(role='search')
-            .form-group
-              input.form-control(type='text', placeholder='Search')
-            button.btn.btn-default(type='submit') Submit
-          //- ul.nav.navbar-nav.navbar-right
-            //- li.dropdown
-            //-   a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-            //-     | Dropdown 
-            //-     span.caret
-            //-   ul.dropdown-menu
-            //-     li
-            //-       a(href='#') Action
-            //-     li
-            //-       a(href='#') Another action
-            //-     li
-            //-       a(href='#') Something else here
-            //-     li.divider(role='separator')
-            //-     li
-            //-       a(href='#') Separated link
+                  a(href='/auth/logout') Log Out
           p
            button#fb_icon.btn.btn-facebook
             a(href='/auth/facebook')

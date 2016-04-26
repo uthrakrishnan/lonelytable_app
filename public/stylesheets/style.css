@@ -1,7 +1,7 @@
 #fb_icon {
-	position: relative;
+	position: absolute;
 	top: 8px;
-	left: 60px;
+	right: 5px;
 }
 
 #filterDiv {
@@ -10,5 +10,10 @@
 }
 
 #venueListDiv {
-	background-color: rgba(0, 0, 255, 0.3);
+	background-color: rgba(0, 0, 255, 0.5);
+}
+
+.dropdown {
+	position: absolute;
+	left: 380px;
 }
