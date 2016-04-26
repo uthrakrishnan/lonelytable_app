@@ -1,3 +1,7 @@
+h1, h3 {
+	text-align: center;
+}
+
 #fb_icon {
 	position: absolute;
 	top: 8px;
@@ -12,9 +16,10 @@
 #venueListDiv {
 	position: relative;
 	left: 30px;
-	top: -4px;
+	/*top: -4px;*/
 	background-color: rgba(0, 0, 255, 0.2);
-	border: solid white 5px;
+	border: solid black 3px;
+	height: 378;
 }
 
 .dropdown {
@@ -22,11 +27,11 @@
 	left: 380px;
 }
 
-img {
+.venueImg {
 	position: relative;
-	left: 26px;
-	height: 300px;
-	width: 486px;
+	height: 100%;
+	width: 100%;
+	/*top: -55px;*/
 }
 
 #info {

@@ -11,10 +11,7 @@ router.use(helpers.currentUser);
 //INDEX
 router.get('/', (req, res) => {
 	 knex('venues').then((venues) => {
-		res.render('venues/index', {
-			venues, 
-			// message: req.flash('loginMessage')
-		});
+		res.render('venues/index', {venues});
 	});
 });
 
