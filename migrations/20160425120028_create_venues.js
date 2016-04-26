@@ -8,7 +8,8 @@ exports.up = function(knex, Promise) {
     table.integer('zipcode'),
     table.text('pic1'),
     table.text('pic2'),
-    table.text('pic3'),
+    table.text('music'),
+    table.text('clientele'),
     table.text('tableMapPic'),
     table.text('description')
   })
