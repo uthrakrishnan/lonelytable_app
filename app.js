@@ -13,13 +13,14 @@ const routes = require('./routes/index');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
 app.use(morgan('dev'));
+app.use(express.static(__dirname + "/public"));
 app.set('view engine', 'jade');
 
 app.disable('x-powered-by');
 
-// app.use(session({secret: preocess.env.SECRET})
+app.use(session({secret: process.env.SECRET}));
 
-
+app.use('/auth', routes.auth)
 app.use('/venues', routes.venues)
 app.use('/tables', routes.tables)
 app.use('/tables/:table_id/reservations', routes.reservations)

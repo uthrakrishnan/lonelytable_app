@@ -6,7 +6,7 @@ const helpers = require('../helpers/authHelpers');
 
 
 router.use(helpers.currentUser);
-// router.use(helpers.ensureAuth);
+router.use(helpers.ensureAuth);
 
 
 //INDEX

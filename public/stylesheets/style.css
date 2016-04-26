@@ -1,0 +1,14 @@
+#fb_icon {
+	position: relative;
+	top: 8px;
+	left: 60px;
+}
+
+#filterDiv {
+	background-color: rgba(0, 0, 255, 0.3);
+	float: left;
+}
+
+#venueListDiv {
+	background-color: rgba(0, 0, 255, 0.3);
+}
