@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 	 knex('venues').then((venues) => {
 		res.render('venues/index', {
 			venues, 
-			message: req.flash('loginMessage')
+			// message: req.flash('loginMessage')
 		});
 	});
 });
@@ -25,5 +25,16 @@ router.get('/:id', (req, res) => {
 		res.render('venues/show', {venue});
 	});
 });
+
+//FILTER
+//WILL NEED TO CORRECT MOST NAMES WITH ACTUAL DB TERMS
+router.get('/venues/filter', (req, res) =>{
+	knex('tables').whereRaw('seatsAvail >= ?', req.params.filter.seatNeeded).whereRaw('minCost <= ?', req.params.filter.maxPledge).where({
+		VenueName: 'filter[venueName]',
+		status: req.params.filter.status,
+		reviews: req.params.filter.reviews,
+		stars: req.params.filter.stars
+	})
+})
 
 module.exports = router

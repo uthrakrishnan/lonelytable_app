@@ -4,4 +4,4 @@ const tables = require('./tables');
 const reservations = require('./reservations')
 const auth = require('./auth');
 
-module.exports = {users, venues, tables, auth}
+module.exports = {users, venues, tables, reservations, auth}
