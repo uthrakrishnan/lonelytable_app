@@ -36,12 +36,12 @@ var yelp = new Yelp({
 })
   
 var getYelp=function(){
-  knex.select('venueName').from('venues').then(data=>{
+  knex.select("name").from('venues').then(data=>{
     console.log(data)
     data.forEach(el=>{
-      yelp.search({term: el.venueName, location: 'San Francisco'}).then(results=>{
+      yelp.search({term: el.name, location: 'San Francisco'}).then(results=>{
         console.log(results.businesses[0]);
-        knex('venues').where('venueName', el.venueName).update({
+        knex('venues').where("name", el.name).update({
           reviews: results.businesses[0].review_count,
           stars: results.businesses[0].rating_img_url
         })
