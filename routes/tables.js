@@ -3,15 +3,17 @@ const router = express.Router({mergeParams: true});
 const knex = require('../db/knex');
 const helpers = require('../helpers/authHelpers');
 
-
+require('locus')
 
 router.use(helpers.currentUser);
 
 
 //INDEX
 router.get('/', (req, res) => {
-	 knex('tables').then((tables) => {
-		res.render('tables/index', {tables});
+	 knex('tables').where('venue_id', req.params.venue_id).then((tables) => {
+		knex('venues').where('id', req.params.venue_id).first().then((venue)=>{
+			res.render('tables/index', {tables, venue});
+		})
 	});
 });
 

@@ -22,8 +22,8 @@ app.use(session({secret: process.env.SECRET}));
 
 app.use('/auth', routes.auth)
 app.use('/venues', routes.venues)
-app.use('/tables', routes.tables)
-app.use('/tables/:table_id/reservations', routes.reservations)
+app.use('/venues/:venue_id/tables', routes.tables)
+app.use('venues/:venue_id/tables/:table_id/reservations', routes.reservations)
 
 //HOME static page
 app.get("/", function(req, res){

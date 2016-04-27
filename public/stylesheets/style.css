@@ -2,24 +2,36 @@ h1, h3 {
 	text-align: center;
 }
 
+/*	LAYOUTS  */
+
 #fb_icon {
 	position: absolute;
 	top: 8px;
 	right: 5px;
 }
 
+
+/*	VENUES */
+
 #filterDiv {
 	background-color: rgba(0, 0, 255, 0.3);
 	float: left;
 }
 
-#venueListDiv {
+#venueInTables {
+	background-color: rgba(0, 0, 255, 0.7);
+}
+
+.venueListDiv {
 	position: relative;
 	left: 30px;
-	/*top: -4px;*/
 	background-color: rgba(0, 0, 255, 0.2);
 	border: solid black 3px;
-	height: 378;
+	height: 300px;
+	width: 820px;
+
+	margin-bottom: 10px;
+
 }
 
 .dropdown {
@@ -34,6 +46,30 @@ h1, h3 {
 	/*top: -55px;*/
 }
 
-#info {
-	/*border-right: black solid 5px*/
+.pic {
+	height: 100%;
+}
+
+/*	TABLES  */
+
+
+
+.tableListDiv {
+	display: inline-block;
+	position: relative;
+	left: 30px;
+	background-color: rgba(0, 0, 255, 0.2);
+	border: solid black 3px;
+	height: 300px;
+	width: 820px;
+
+	margin-bottom: 10px;
+
+}
+
+.tableImg {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	/*top: -55px;*/
 }
