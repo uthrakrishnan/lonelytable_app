@@ -8,7 +8,8 @@ const methodOverride = require('method-override');
 const morgan = require('morgan');
 const session = require('cookie-session');
 const routes = require('./routes/index');
-
+const Yelp  = require('yelp');
+const knex = require('./db/knex');
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
@@ -26,33 +27,29 @@ app.use('/tables', routes.tables)
 app.use('/tables/:table_id/reservations', routes.reservations)
 
 //update Venues tables with Yelp reviews
-function getYelp(){
+
+var yelp = new Yelp({
+  consumer_key: process.env.YELPCK,
+  consumer_secret: process.env.YELPCS,
+  token: process.env.TOKEN,
+  token_secret: process.env.TOKENS
+})
+  
+var getYelp=function(){
   knex.select('venueName').from('venues').then(data=>{
+    console.log(data)
     data.forEach(el=>{
-      var yelpUrl = `https://api.yelp.com/v2/search?location=San+Francisco&term=${el.venueName}`
-      var parameters = {
-        oauth_consumer_key: 'f_p1-tl_NyqmEFbhQ9qPXw',
-        oauth_token: 'IaQGC9d32wvHKGfRrif0CUim0smogeb3',
-        oauth_nonce: generateNonce(),
-        oauth_timestamp: Math.floor(Date.now()/1000),
-        oauth_signature_method: 'HMAC-SHA1',
-        oauth_version : '1.0',
-        callback: 'cb'
-      }
-      $.ajax({
-        url: `https://api.yelp.com/v2/search?location=San+Francisco&term=${el.venueName}`,
-        jsonp: "callback",
-        dataType: "jsonp",
-        success: function( response ) {
-            var pageId = response.query.pageids[0]; 
-            var wordInfo = response.query.pages[pageId].extract;
-            console.log(wordInfo);
-            $('#wikipediaArticle').append(wordInfo);
-        }
-      });
+      yelp.search({term: el.venueName, location: 'San Francisco'}).then(results=>{
+        console.log(results.businesses[0]);
+        knex('venues').where('venueName', el.venueName).update({
+          reviews: results.businesses[0].review_count,
+          stars: results.businesses[0].rating_img_url
+        })
+      })
     })
   })
 };
+getYelp();
 
 
 

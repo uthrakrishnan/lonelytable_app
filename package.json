@@ -34,6 +34,7 @@
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.0",
     "pg": "^4.5.3",
-    "pug": "^2.0.0-alpha6"
+    "pug": "^2.0.0-alpha6",
+    "yelp": "^1.0.1"
   }
 }

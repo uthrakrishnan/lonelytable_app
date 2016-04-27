@@ -13,7 +13,7 @@ exports.up = function(knex, Promise) {
     table.text('tableMapPic'),
     table.text('description'),
     table.integer('reviews'),
-    table.integer('stars')
+    table.text('stars')
   })
 };
 
