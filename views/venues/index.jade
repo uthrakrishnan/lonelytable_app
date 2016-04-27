@@ -4,7 +4,7 @@ block content
 	h1 Venues
 
 	div 
-		div#filterDiv(class='col col-xs-4')
+		div#filterDiv(class='col col-xs-2')
 			h3 Filters
 
 			form(action='/venues/filter' method='GET')
@@ -18,13 +18,13 @@ block content
 				h4 Table Status
 				form
 					label Open
-						input(type="radio" name='filter[status]' value='open')
+						input(type="radio" name='filter[table_status]' value='open')
 					br
 					label Pending
-						input(type="radio" name='filter[status]' value='pending')
+						input(type="radio" name='filter[table_status]' value='pending')
 					br
 					label Closed
-						input(type="radio" name='filter[status]' value='closed')
+						input(type="radio" name='filter[table_status]' value='closed')
 					br
 				h4 Number of Reviews
 				form
@@ -54,8 +54,9 @@ block content
 					label 1
 						input(type="radio" name='filter[stars]' value='1')
 					br
+				input(type='submit' value='Search')
 
-		div#venueListDiv(class='col col-xs-8 offset-xs-4')
+		div#venueListDiv(class='col col-xs-8 offset-xs-5')
 			div#info(class='col-xs-4')
 				h3 INFO
 				each venue in venues
@@ -67,6 +68,6 @@ block content
 					p Stars: 
 					p
 						a(href='/venues/#{__(venueID)__}')
-			div#pic
-				h3 PIC
-				img(src="../../public/images/club1.JPG")
+			div#pic(class='col-sx-7 offset-xs-9')
+				//- h3 PIC
+				img(src="images/club1.JPG")

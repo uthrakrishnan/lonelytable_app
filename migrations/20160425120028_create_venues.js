@@ -2,7 +2,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('venues', table=>{
     table.increments(),
-    table.text('name'),
+    table.text('venueName'),
     table.text('street_address'),
     table.text('city'),
     table.integer('zipcode'),
@@ -11,7 +11,9 @@ exports.up = function(knex, Promise) {
     table.text('music'),
     table.text('clientele'),
     table.text('tableMapPic'),
-    table.text('description')
+    table.text('description'),
+    table.integer('reviews'),
+    table.integer('stars')
   })
 };
 

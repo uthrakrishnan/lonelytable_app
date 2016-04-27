@@ -35,6 +35,7 @@ router.get('/venues/filter', (req, res) =>{
 		reviews: req.params.filter.reviews,
 		stars: req.params.filter.stars
 	})
+	res.send()
 })
 
 module.exports = router

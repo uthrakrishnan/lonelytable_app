@@ -34,7 +34,7 @@ body {
 }
 
 #fb_icon {
-	position: relative;
+	position: absolute;
 	top: 8px;
 	right: 8px;
   background-color: #3b5998;
@@ -59,6 +59,8 @@ body {
   display:table-cell;
   vertical-align: middle;
   text-align: center;
+	right: 5px;
+
 }
 
 #filterDiv {
@@ -67,5 +69,25 @@ body {
 }
 
 #venueListDiv {
-	background-color: rgba(0, 0, 255, 0.3);
+	position: relative;
+	left: 30px;
+	top: -4px;
+	background-color: rgba(0, 0, 255, 0.2);
+	border: solid white 5px;
+}
+
+.dropdown {
+	position: absolute;
+	left: 380px;
+}
+
+img {
+	position: relative;
+	left: 26px;
+	height: 300px;
+	width: 486px;
+}
+
+#info {
+	/*border-right: black solid 5px*/
 }

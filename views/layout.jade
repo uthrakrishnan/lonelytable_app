@@ -9,7 +9,10 @@ head
  link(href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet")
  script(src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous")
  script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous")
- link(rel='stylesheet' href='/stylesheets/style.css')
+
+
+ link(rel='stylesheet' href='stylesheets/style.css')
+
 body
  html
   body
@@ -22,7 +25,10 @@ body
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a#navBrand.navbar-brand(href='/') LonelyTable
+
+
+          a.navbar-brand(href='/') Lonely Table
+
         // Collect the nav links, forms, and other content for toggling
         #navCollapse.collapse.navbar-collapse
           ul.nav.navbar-nav
@@ -37,6 +43,7 @@ body
                 //- span.sr-only (current)
             //- li
             //-   a(href='/tables') Talbes
+
             //- li.dropdown
             //-   a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
             //-     | More info... 
@@ -54,10 +61,12 @@ body
                 //- li.divider(role='separator')
                 //- li
                 //-   a(href='#') One more separated link
+
           //- form.navbar-form.navbar-left(role='search')
           //-   .form-group
           //-     input.form-control(type='text', placeholder='Search')
           //-   button.btn.btn-default(type='submit') Submit
+
           ul.nav.navbar-nav.navbar-right
             li
              button#fb_icon.btn.btn-facebook
@@ -80,5 +89,30 @@ body
             //-       a(href='#') Separated link
             //- /.navbar-collapse
             //- /.container-fluid
+
+          ul.nav.navbar-nav
+            li.dropdown.nav-pill
+              a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                | Your Account 
+                span.caret
+              ul.dropdown-menu
+                li
+                  a(href='/users/#{}') My Profile 
+                  //- user.id
+                li
+                  a(href='#') My Reservations
+                li
+                  a(href='#') Inbox
+                li.divider(role='separator')
+                li
+                  a(href='/auth/logout') Log Out
+          p
+           button#fb_icon.btn.btn-facebook
+            a(href='/auth/facebook')
+             i.fa.fa-facebook
+             |  | Connect with Facebook
+        // /.navbar-collapse
+      // /.container-fluid
+
 
  block content
