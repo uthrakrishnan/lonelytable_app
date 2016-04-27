@@ -10,6 +10,8 @@ const session = require('cookie-session');
 const routes = require('./routes/index');
 const Yelp  = require('yelp');
 const knex = require('./db/knex');
+const passport = require('passport');
+
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
@@ -20,6 +22,8 @@ app.set('view engine', 'jade');
 app.disable('x-powered-by');
 
 app.use(session({secret: process.env.SECRET}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/auth', routes.auth)
 app.use('/venues', routes.venues)
@@ -36,20 +40,24 @@ var yelp = new Yelp({
 })
   
 var getYelp=function(){
-  knex.select("name").from('venues').then(data=>{
-    console.log(data)
+  return knex.select("name").from('venues').then(data=>{
+    // console.log(data)
     data.forEach(el=>{
       yelp.search({term: el.name, location: 'San Francisco'}).then(results=>{
-        console.log(results.businesses[0]);
+        // console.log(results.businesses[0]);
         knex('venues').where("name", el.name).update({
           reviews: results.businesses[0].review_count,
           stars: results.businesses[0].rating_img_url
-        })
+        }).then(function() {
+          // NoOP
+        });
       })
     })
-  })
+  });
 };
-getYelp();
+getYelp().then(function() {
+  console.log("Done updating yelp data!");
+});
 
 
 
