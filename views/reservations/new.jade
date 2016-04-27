@@ -3,16 +3,16 @@ extends ../layout.jade
 block content
 	h1 New Reservation
 
-	h4= //username
-	h4= //venue name
-	h4= //date & time
-	h4 Max Capacity
-	h4 Seats Available #{}
-	h4 Min Pledge: #{minPledge}
+	h4 username: #{user.username}
+	h4 venue name: #{table.venueName}
+	h4 date and time: 
+	h4 Max Capacity: #{table.maxCapacity}
+	h4 Seats Available: #{}
+	h4 Min Pledge: #{table.cost / table.maxCapacity}
 
 
 
 	form(action='' method='POST')
-		input(type="range" name='reservation[seats]' placeholder='Number of people reservation is for' min='1' max=_(maxCap)_ required)
-		input(type='number' name='reservation[pledge]' placeholder='Pledged Amount' min=___(minPledge)___ required)
+		input(type="range" name='reservation[seats]' placeholder='Number of people reservation is for' min='1' max=table.maxCapacity required)
+		input(type='number' name='reservation[pledge]' placeholder='Pledged Amount' min=(talbe.cost / table.maxCapacity) required)
 		input(type="submit" value='Submit')
