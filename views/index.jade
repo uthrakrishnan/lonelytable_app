@@ -1,14 +1,8 @@
-//-index.pug 
 //-APP HOMEPAGE
-
 extends ./layout.jade
 
 block content
 
- //- p Welocme to LonelyTable, the place for people without a lot of friends, but too much money.
-
- //- div#welcomeTitle
- //-  p LonelyTable
  div#homepageCarousel.carousel.slide(data-ride='carousel')
   // Indicators
   ol.carousel-indicators
@@ -27,14 +21,13 @@ block content
       #carouselCaption.carousel-caption
         |for a great night out
     .item
-      img(src='/images/lasers.jpg', alt='LonelyTable')
+      img(src='/images/club2.jpg', alt='LonelyTable')
       #carouselCaption.carousel-caption
         |friends new and old
     .item
-      img(src='/images/club1.jpg', alt='LonelyTable')
+      img(src='/images/bottles1.jpg', alt='LonelyTable')
       #carouselCaption.carousel-caption
         |sign in with Facebook
-    |     ...
   // Controls
   a.left.carousel-control(href='#homepageCarousel', role='button', data-slide='prev')
     span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
@@ -42,4 +35,17 @@ block content
   a.right.carousel-control(href='#homepageCarousel', role='button', data-slide='next')
     span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
     span.sr-only Next
-      p text goes here blah blah blah
+ div#homepageText
+  p LonelyTable makes it easy and affordable to reserve one or more seats at a VIP table at an upscale club. We currently serve the San Francisco Bay Area, and we're expanding fast!
+ .row
+    .col-xs-6
+      div#homeLeft
+        h2 Getting Started
+        p First do this, then do that. Then go have some fun toight!
+        a.btn.btn-primary(href='/getstarted', role='button') Need more help?
+    .col-xs-6
+      div#homeLeft
+        h2 About Us
+        p We are just like you, with all of your hopes and dreams.
+        a.btn.btn-primary(href='/about', role='button') More about us
+ include includes/foot.jade
