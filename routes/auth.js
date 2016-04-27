@@ -18,7 +18,8 @@ passport.use(new FacebookStrategy({
   			return done(null, user);
   		}
   		else {
-  			knex('users').insert({fb_id: profile.id, username: profile.displayName}, '*').then(user=>{
+        eval(require('locus'))
+  			knex('users').insert({fb_id: profile.id, alias: profile.displayName}, '*').then(user=>{
   				return done(null, user[0]);
   			});
   		}
@@ -52,12 +53,18 @@ router.get('/facebook/callback', function(req,res,next){
         res.redirect('/login');
       }
       else{
-
+        
         // AFTER MORE SETUP, FIND WHAT 'user' is and send info to further add info for databse
 
-        eval(locus)
-        knex('users').where('id', user)
-        res.redirect('/users');
+        // eval(require('locus'))
+        knex('users').where('id', user).then(user=>{
+          if (user.profil_pic){
+            res.redirect('/users/new');
+          }
+          else {
+            res.redirect('/venues')
+          }
+        })
       }
     })
       // Successful authentication, redirect home.

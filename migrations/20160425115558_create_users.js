@@ -7,7 +7,8 @@ exports.up = function(knex, Promise) {
     table.text('alias'),
     table.text('profile_pic'),
     table.date('dob'),
-    table.text('blurb')
+    table.text('blurb'),
+    table.text('fb_id')
   });
 };
 
