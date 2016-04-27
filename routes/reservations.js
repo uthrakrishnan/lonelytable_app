@@ -20,8 +20,18 @@ router.get('/', (req, res) => {
 router.get('/new', (req, res) => {
 	knex('tables').where({id: req.params.table_id}).first().then(table=>{
 		knex('venues').where({id: req.params.venue_id}).first().then(venue=>{
-			eval(locus)
-			res.render('reservations/new', {table});
+			knex('reservations').where({table_id: req.params.table_id}).then(reservations=>{
+				// eval(locus)
+				var seatsTaken = reservations.reduce((start, next)=>{
+					// eval(locus)
+					return start += next.seats
+
+				}, 0);
+				
+				var seatsAvailable = table.maxCapacity - seatsTaken;
+				eval(locus)
+				res.render('reservations/new', {venue, table, seatsTaken, seatsAvailable});
+			})
 		})
 	})
 });

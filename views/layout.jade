@@ -9,6 +9,8 @@ head
  link(href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet")
  script(src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous")
  script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous")
+ 
+ script(src='/javascripts/script.js' )
 
  link(rel='stylesheet' href='/stylesheets/style.css')
 
@@ -22,6 +24,8 @@ body
 
           a.navbar-brand(href='/') Lonely Table
 
+        // Collect the nav links, forms, and other content for toggling
+        #navCollapse.collapse.navbar-collapse
           ul.nav.navbar-nav
             li
               a(href='/venues') Venues 
@@ -65,3 +69,5 @@ body
 
 
  block content
+
+ 
