@@ -71,6 +71,11 @@ app.get('/contact', function(req, res) {
   res.render('contact');
 });
 
+//GETTING STARTED static page
+app.get('/getstarted', function(req, res) {
+  res.render('getstarted');
+});
+
 //LOGIN static page
 app.get('/login', function(req, res) {
   res.redirect('/auth/facebook');
