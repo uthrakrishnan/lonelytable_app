@@ -3,6 +3,8 @@ const router = express.Router({mergeParams: true});
 const knex = require('../db/knex');
 const helpers = require('../helpers/authHelpers');
 
+require('locus')
+
 
 
 router.use(helpers.currentUser);
@@ -11,10 +13,10 @@ router.use(helpers.currentUser);
 //INDEX
 router.get('/', (req, res) => {
 	 knex('venues').then((venues) => {
-		res.render('venues/index', {
-			venues, 
-			// message: req.flash('loginMessage')
-		});
+	 	// eval(locus)
+	 	knex('tables').then((tables) =>{
+			res.render('venues/index', {venues, tables});
+	 	})
 	});
 });
 

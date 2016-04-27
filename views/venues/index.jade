@@ -3,29 +3,24 @@ extends ../layout.jade
 block content
 	h1 Venues
 
-	div 
-		div#filterDiv(class='col col-xs-2')
+	div
+		div#filterDiv(class='col col-xs-2 col-xl-2')
 			h3 Filters
 
 			form(action='/venues/filter' method='GET')
 				input(type="text" name='filter[venueName]' placeholder='venue name OR key words')
 				br
+				br
 				input(type="integer" name='filter[seatsNeeded]' placeholder='How Many Seats do you need?')
+				br
 				br
 				//- input(type="integer" name='filter[tables]' placeholder='tables available')
 				input(type="text" name='filter[maxPledge]' placeholder='max $ you want to spend')
 				//- input(type="checkbox" name='filter[tableAvailable]') 
-				h4 Table Status
+				h4 Table Available
 				form
-					label Open
-						input(type="radio" name='filter[table_status]' value='open')
-					br
-					label Pending
-						input(type="radio" name='filter[table_status]' value='pending')
-					br
-					label Closed
-						input(type="radio" name='filter[table_status]' value='closed')
-					br
+					label Yes
+						input(type="checkbox" name='filter[table_status]' value='open')
 				h4 Number of Reviews
 				form
 					label	<10
@@ -41,33 +36,25 @@ block content
 				form
 					label 5
 						input(type="radio" name='filter[stars]' value='5')
-					br
 					label 4
 						input(type="radio" name='filter[stars]' value='4')
-					br
 					label 3
 						input(type="radio" name='filter[stars]' value='3')
-					br
 					label 2
 						input(type="radio" name='filter[stars]' value='2')
-					br
 					label 1
 						input(type="radio" name='filter[stars]' value='1')
 					br
-				input(type='submit' value='Search')
+				input(type='submit' value='Search' class='btn btn-primary')
 
-		div#venueListDiv(class='col col-xs-8 offset-xs-5')
-			div#info(class='col-xs-4')
-				h3 INFO
-				each venue in venues
-					p Venue: 
-					p maxCap:
-					p tables available: 
-					p min price at max cap for cheapest table:
-					p # of reviews: 
-					p Stars: 
-					p
-						a(href='/venues/#{__(venueID)__}')
-			div#pic(class='col-sx-7 offset-xs-9')
-				//- h3 PIC
-				img(src="images/club1.JPG")
+		div.venueItems
+			each venue in venues
+				div.venueListDiv(class='col col-xs-offset-2')
+					div.info(class='col col-xs-4')
+						h3 #{venue.venueName} 
+						p Location: #{venue.street_address}, #{venue.city}
+						p # of reviews: #{venue.reviews}
+						p Stars: #{venue.stars}
+						a(href='/venues/#{venue.id}/tables') More...
+					div.pic(class='col col-xs-offset-4')
+						img.venueImg(src=venue.pic1)
