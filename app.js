@@ -8,7 +8,8 @@ const methodOverride = require('method-override');
 const morgan = require('morgan');
 const session = require('cookie-session');
 const routes = require('./routes/index');
-
+const Yelp  = require('yelp');
+const knex = require('./db/knex');
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
@@ -24,6 +25,33 @@ app.use('/auth', routes.auth)
 app.use('/venues', routes.venues)
 app.use('/venues/:venue_id/tables', routes.tables)
 app.use('/venues/:venue_id/tables/:table_id/reservations', routes.reservations)
+
+//update Venues tables with Yelp reviews
+
+var yelp = new Yelp({
+  consumer_key: process.env.YELPCK,
+  consumer_secret: process.env.YELPCS,
+  token: process.env.TOKEN,
+  token_secret: process.env.TOKENS
+})
+  
+var getYelp=function(){
+  knex.select("name").from('venues').then(data=>{
+    console.log(data)
+    data.forEach(el=>{
+      yelp.search({term: el.name, location: 'San Francisco'}).then(results=>{
+        console.log(results.businesses[0]);
+        knex('venues').where("name", el.name).update({
+          reviews: results.businesses[0].review_count,
+          stars: results.businesses[0].rating_img_url
+        })
+      })
+    })
+  })
+};
+getYelp();
+
+
 
 //HOME static page
 app.get("/", function(req, res){
