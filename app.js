@@ -25,6 +25,37 @@ app.use('/venues', routes.venues)
 app.use('/tables', routes.tables)
 app.use('/tables/:table_id/reservations', routes.reservations)
 
+//update Venues tables with Yelp reviews
+function getYelp(){
+  knex.select('venueName').from('venues').then(data=>{
+    data.forEach(el=>{
+      var yelpUrl = `https://api.yelp.com/v2/search?location=San+Francisco&term=${el.venueName}`
+      var parameters = {
+        oauth_consumer_key: 'f_p1-tl_NyqmEFbhQ9qPXw',
+        oauth_token: 'IaQGC9d32wvHKGfRrif0CUim0smogeb3',
+        oauth_nonce: generateNonce(),
+        oauth_timestamp: Math.floor(Date.now()/1000),
+        oauth_signature_method: 'HMAC-SHA1',
+        oauth_version : '1.0',
+        callback: 'cb'
+      }
+      $.ajax({
+        url: `https://api.yelp.com/v2/search?location=San+Francisco&term=${el.venueName}`,
+        jsonp: "callback",
+        dataType: "jsonp",
+        success: function( response ) {
+            var pageId = response.query.pageids[0]; 
+            var wordInfo = response.query.pages[pageId].extract;
+            console.log(wordInfo);
+            $('#wikipediaArticle').append(wordInfo);
+        }
+      });
+    })
+  })
+};
+
+
+
 //HOME static page
 app.get("/", function(req, res){
   res.render('index');
