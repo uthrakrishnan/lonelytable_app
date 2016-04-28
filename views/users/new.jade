@@ -3,7 +3,8 @@ extends ../layout.jade
 block content
     h1 Please fill out your profile information
     h5 All fields are required
-    form(action="/users" method='post')
+    form(action="/users?_method=PATCH" method='post')
+        input(type="text", name="user[fb_id]", value='#{user.fb_id}')
         h4 Username
         input(type="text", name="user[username]", required)
         h4 Date of birth 

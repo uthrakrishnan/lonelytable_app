@@ -43,9 +43,10 @@ router.get('/:id/edit', (req, res) => {
 });
 
 //POST
-router.post('/', (req, res) => {
+router.patch('/', (req, res) => {
 	var user = req.body.user;
-	knex('users').insert({username: user.username, dob: user.dob, profile_pic: user.profile_pic, blurb: user.blurb}).where('fb_id','').then(()=>{
+	console.log(user);
+	knex('users').where('fb_id', user.fb_id).update({username: user.username, dob: user.dob, profile_pic: user.profile_pic, blurb: user.blurb}).then(()=>{
 		// req.flash('newUser', 'Added New User!');
 		res.redirect('/venues');
 	});

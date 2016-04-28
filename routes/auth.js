@@ -57,9 +57,10 @@ router.get('/facebook/callback', function(req,res,next){
         // AFTER MORE SETUP, FIND WHAT 'user' is and send info to further add info for databse
 
         // eval(require('locus'))
-        knex('users').where('fb_id', user.fb_id).then(user=>{
+        knex('users').where('fb_id', user.fb_id).first().then(user=>{
+          eval(require('locus'))
           if (!user.username){
-            res.redirect('/users/new');
+            res.render('users/new', {user: user});
           }
           else {
             res.redirect('/venues')
@@ -80,7 +81,7 @@ router.get('/login', (req, res)=>{
 
 router.get('/logout', (req, res)=>{
 	req.logout();
-	res.redirect('/auth/login');
+	res.redirect('/');
 });
 
 
