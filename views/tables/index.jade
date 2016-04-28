@@ -1,12 +1,11 @@
 extends ../layout.jade
 
 block content
-	h1 Venue
+	h1 #{venue.name}
 	
 	div#tablesIndex
 		div#venueInTables.venueListDiv(class='col col-xs-offset-1')
 			div.info(class='col col-xs-4')
-				h3 #{venue.name} 
 				p Location: #{venue.street_address}, #{venue.city}, #{venue.zipcode}
 				p Music: #{venue.music}
 				p Clientele: #{venue.clientele}
@@ -18,7 +17,8 @@ block content
 		div.venueDescription(class='col col col-xs-8')
 			h3 What to look forward to! 
 			p= venue.description
-		br
+		div#map
+		div#pano
 		br
 
 		h1 Tables
@@ -46,4 +46,6 @@ block content
 								a(type='button' id='noJoin' class='btn btn-sm' href='#') JOIN TABLE
 					div.pic(class='col col-xs-offset-4')
 						img.tableImg(src=venue.pic2)
+		script(src="/javascripts/venue_map.js")
+		script(async defer src="https://maps.googleapis.com/maps/api/js?key="+process.env.GOOGLE_MAPS+"&callback=initMap")
 

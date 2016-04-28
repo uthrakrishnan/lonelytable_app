@@ -88,7 +88,12 @@ body {
 	right: 5px;
 
 }
-
+  
+#map, #pano {
+  float: left;
+  height: 250px;
+  width: 50%;
+}
 
 
 /*	VENUES */
