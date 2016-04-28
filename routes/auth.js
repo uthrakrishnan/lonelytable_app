@@ -10,7 +10,7 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 passport.use(new FacebookStrategy({
 	clientID: process.env.FACEBOOK_KEY,
 	clientSecret: process.env.FACEBOOK_SECRET,
-	callbackURL: "http://localhost:3000/auth/facebook/callback",
+	callbackURL: "https://lonelytable-app.herokuapp.com/",
   	scope: ['email', 'public_profile']
   }, (accessToken, refreshToken, profile, done)=>{
   	knex('users').where('fb_id', profile.id).first().then(user=>{
