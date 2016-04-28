@@ -60,7 +60,7 @@ router.post('/', (req, res) => {
 	knex('reservations').insert({
 		table_id: +req.params.table_id,
 		// date: ,
-		// user_id: ,
+		user_id: req.user.id,
 		pledge: req.body.reservation.pledge,
 		seats: +req.body.reservation.seats 
 	}).then(()=>{
