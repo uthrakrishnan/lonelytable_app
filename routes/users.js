@@ -45,8 +45,7 @@ router.get('/:id/edit', (req, res) => {
 //POST
 router.patch('/', (req, res) => {
 	var user = req.body.user;
-	console.log(user);
-	knex('users').where('fb_id', user.fb_id).update({username: user.username, dob: user.dob, profile_pic: user.profile_pic, blurb: user.blurb}).then(()=>{
+	knex('users').where('fb_id', user.fb_id).update({alias: user.alias, dob: user.dob, profile_pic: user.profile_pic, blurb: user.blurb}).then(()=>{
 		// req.flash('newUser', 'Added New User!');
 		res.redirect('/venues');
 	});

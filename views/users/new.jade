@@ -5,8 +5,8 @@ block content
     h5 All fields are required
     form(action="/users?_method=PATCH" method='post')
         input(type="hidden", name="user[fb_id]", value='#{user.fb_id}')
-        h4 Username
-        input(type="text", name="user[username]", required)
+        h4 Alias (what you want other people to see)
+        input(type="text", name="user[alias]", required)
         h4 Date of birth 
         input(type="date", name="user[dob]", required)
         h4 Profile picture 
