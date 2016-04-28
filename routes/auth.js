@@ -57,8 +57,8 @@ router.get('/facebook/callback', function(req,res,next){
         // AFTER MORE SETUP, FIND WHAT 'user' is and send info to further add info for databse
 
         // eval(require('locus'))
-        knex('users').where('id', user).then(user=>{
-          if (user.profil_pic){
+        knex('users').where('fb_id', user.fb_id).then(user=>{
+          if (!user.username){
             res.redirect('/users/new');
           }
           else {

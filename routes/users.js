@@ -19,6 +19,10 @@ router.get('/', (req, res) => {
 	});
 });
 
+//NEW
+router.get('/new', (req, res) => {
+	res.render('users/new');
+});
 
 //SHOW
 router.get('/:id', (req, res) => {
@@ -28,10 +32,6 @@ router.get('/:id', (req, res) => {
 });
 
 
-//NEW
-router.get('/new', (req, res) => {
-	res.render('users/new');
-});
 
 
 //EDIT
@@ -44,9 +44,10 @@ router.get('/:id/edit', (req, res) => {
 
 //POST
 router.post('/', (req, res) => {
-	knex('users').insert({username: req.body.user.username, password: hash}).then(()=>{
-		req.flash('newUser', 'Added New User!');
-		res.redirect('/users');
+	var user = req.body.user;
+	knex('users').insert({username: user.username, dob: user.dob, profile_pic: user.profile_pic, blurb: user.blurb}).where('fb_id','').then(()=>{
+		// req.flash('newUser', 'Added New User!');
+		res.redirect('/venues');
 	});
 });
 
