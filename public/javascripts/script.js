@@ -8,7 +8,10 @@ $(function() {
 	
 	//CHANGES REQUIRED PLEDGE WHILE CHANGING NUMBER OF SEATS
 	$('#seatsWanted').on('change', e=>{
-		debugger
-		$('#pledge').text('Your Pledge: ' + (+e.target.value * parseInt($('#pledgePerSeat').text(), 10)
+		$('#pledge').text('Your Pledge: ' + (+e.target.value * parseInt($('#pledgePerSeat').text().match(/\d+/)[0], 10)
+	))})
+
+	$('#seatsWanted').on('change', e=>{
+		$('#pledgeInput').val((+e.target.value * parseInt($('#pledgePerSeat').text().match(/\d+/)[0], 10)
 	))})
 });

@@ -11,6 +11,7 @@ const routes = require('./routes/index');
 const Yelp  = require('yelp');
 const knex = require('./db/knex');
 const passport = require('passport');
+const flash = require('connect-flash');
 
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -24,6 +25,8 @@ app.disable('x-powered-by');
 app.use(session({secret: process.env.SECRET}));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(flash());
 
 app.use('/auth', routes.auth)
 app.use('/users', routes.users)

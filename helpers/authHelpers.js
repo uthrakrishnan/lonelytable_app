@@ -1,12 +1,13 @@
 const knex = require('../db/knex');
 
+require('locus')
+
 module.exports = {
 	currentUser: (req, res, next) => {
 		if(!req.isAuthenticated) {
 			return next();
 		}
 		else {
-		
 			res.locals.currentUser = req.user;
 			// delete res.locals.currentUser.password;
 			return next();
@@ -15,16 +16,16 @@ module.exports = {
 
 
 	ensureAuth: (req, res, next) =>{
-
 		if(req.originalUrl === "/auth/facebook") {
 			return next();
 		}
-		if(req.isAuthenticated){
+		if(req.isAuthenticated()){
+
 			return next();
 		}
 		else{
 			req.flash('loginMessage', 'Please log in');
-			res.redirect('/auth/facebook');
+			res.redirect('/auth/login');
 		}
 	},
 
