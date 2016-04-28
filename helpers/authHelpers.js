@@ -3,13 +3,23 @@ const knex = require('../db/knex');
 require('locus')
 
 module.exports = {
-	currentUser: (req, res, next) => {
+	currentUserVenueTableReservation: (req, res, next) => {
 		if(!req.isAuthenticated) {
 			return next();
 		}
 		else {
-			res.locals.currentUser = req.user;
-			// delete res.locals.currentUser.password;
+			res.locals.user = req.user;
+
+			knex('tables').where({id: req.params.table_id}).first().then(table=>{
+				knex('venues').where({id: req.params.venue_id}).first().then(venue=>{
+					knex('reservations').where('user_id', req.user.id).then((reservations) => {
+					res.locals.table = table;
+					res.locals.venue = venue;
+					res.locals.userReservations = reservations;
+					})
+				})
+			});
+			// delete res.locals.currentUserVenueTableReservation.password;
 			return next();
 		}
 	},

@@ -83,6 +83,8 @@ body {
 #filterDiv {
 	background-color: rgba(0, 0, 255, 0.3);
 	float: left;
+	text-align: center;
+	border: black solid 3px;
 }
 
 #venueInTables {
@@ -91,11 +93,10 @@ body {
 
 .venueListDiv {
 	position: relative;
-	left: 30px;
+	left: 20px;
 	background-color: rgba(0, 0, 255, 0.2);
 	border: solid black 3px;
-	height: 300px;
-	width: 820px;
+	width: 100%;
 
 	margin-bottom: 10px;
 

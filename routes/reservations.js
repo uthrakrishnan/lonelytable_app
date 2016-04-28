@@ -8,7 +8,7 @@ require('locus')
 
 
 router.use(helpers.ensureAuth);
-router.use(helpers.currentUser);
+router.use(helpers.currentUserVenueTableReservation);
 
 
 //INDEX
@@ -69,6 +69,21 @@ router.post('/', (req, res) => {
 		pledge: +req.body.reservation.pledge,
 		seats: +req.body.reservation.seats 
 	}).then(()=>{
+
+		knex('reservations').where('table_id', req.params.table_id).then(reservations=>{
+			knex('tables').where('table_id', req.params.table_id).first().then(table=>{
+
+				var peopleAtTable = reservations.reduce((start, next)=>{
+					return start += next.seats;
+				}, 0);
+				
+				if (peopleAtTable === table.maxCapacity) {
+					knex('table').update('status', 'closed').where('id', req.params.table_id);
+				}
+			})
+
+		})
+
 		req.flash('newReservation', 'Added New reservation!');
 		res.redirect(`/venues/${req.params.venue_id}/tables/${req.params.table_id}/reservations`);
 	});

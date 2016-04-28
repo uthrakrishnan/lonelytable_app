@@ -36,17 +36,17 @@ body
             li
               a(href='/contact') Contact  
 
-            if(currentUser)
+            if(user)
              li.dropdown.nav-pill
               a#yourAccount.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
                 | Your Account 
                 span.caret
               ul.dropdown-menu
                 li
-                  a(href='/users/#{currentUser.id}') My Profile 
+                  a(href='/users/#{user.id}') My Profile 
                   //- user.id
                 li
-                  a(href='#') My Reservations
+                  a(href='/venues/#{}/tables/#{}/reservations') My Reservations
                 li
                   a(href='#') Inbox
                 li.divider(role='separator')
