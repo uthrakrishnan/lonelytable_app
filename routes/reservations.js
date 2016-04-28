@@ -11,9 +11,10 @@ router.use(helpers.ensureAuth);
 
 //INDEX
 router.get('/', (req, res) => {
-	 knex('reservations').then((reservations) => {
-		res.render('reservations/index', {reservations});
-	});
+	eval(locus)
+	//  knex('reservations').where('user_id', req.user.id).then((reservations) => {
+	// 	res.render('reservations/index', {reservations});
+	// });
 });
 
 //NEW
@@ -29,7 +30,6 @@ router.get('/new', (req, res) => {
 				}, 0);
 				
 				var seatsAvailable = table.maxCapacity - seatsTaken;
-				eval(locus)
 				res.render('reservations/new', {venue, table, seatsTaken, seatsAvailable});
 			})
 		})
@@ -56,8 +56,15 @@ router.get('/:id/edit', (req, res) => {
 
 //POST
 router.post('/', (req, res) => {
-	knex('reservations').insert({reservationname: req.body.reservation.reservationname, password: hash}).then(()=>{
-		req.flash('newreservation', 'Added New reservation!');
+	eval(locus)
+	knex('reservations').insert({
+		table_id: +req.params.table_id,
+		// date: ,
+		// user_id: ,
+		pledge: req.body.reservation.pledge,
+		seats: +req.body.reservation.seats 
+	}).then(()=>{
+		req.flash('newReservation', 'Added New reservation!');
 		res.redirect('/reservations');
 	});
 });
