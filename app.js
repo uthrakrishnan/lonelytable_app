@@ -9,6 +9,7 @@ if (app.get('env') === 'development') {
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser')
 const session = require('cookie-session');
 const routes = require('./routes/index');
 const Yelp  = require('yelp');
@@ -25,7 +26,11 @@ app.set('view engine', 'jade');
 
 app.disable('x-powered-by');
 
-app.use(session({secret: process.env.SECRET }));
+
+app.use(cookieParser())
+
+app.use(session({secret: process.env.SECRET}));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -38,7 +43,7 @@ app.use('/venues/:venue_id/tables', routes.tables)
 app.use('/venues/:venue_id/tables/:table_id/reservations', routes.reservations)
 
 //update Venues tables with Yelp reviews
-app.use(helpers.currentUser);
+app.use(helpers.currentUserVenueTableReservation);
 
 var yelp = new Yelp({
   consumer_key: process.env.YELPCK,

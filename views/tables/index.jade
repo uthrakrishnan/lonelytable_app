@@ -3,7 +3,7 @@ extends ../layout.jade
 block content
 	h1 Venue
 	
-	div
+	div#tablesIndex
 		div#venueInTables.venueListDiv(class='col col-xs-offset-1')
 			div.info(class='col col-xs-4')
 				h3 #{venue.name} 
@@ -12,10 +12,10 @@ block content
 				p Clientele: #{venue.clientele}
 			div.pic(class='col col-xs-offset-4')
 				img.venueImg(src=venue.pic1)
-				div#starsRev
+				div#starsReviews
 					img(src=venue.stars)
 					p # of reviews: #{venue.reviews}
-		div.venueDescription(class='col col col-xs-8 col-xs-offset-1')
+		div.venueDescription(class='col col col-xs-8')
 			h3 What to look forward to! 
 			p= venue.description
 		br
@@ -25,17 +25,25 @@ block content
 
 		div.tableItems
 			each table in tables
-				div.tableListDiv(class='col col-xs-offset-1')
+				div.tableListDiv(class='')
 					div.info(class='col col-xs-4 ')
-						h3 INFO
-						p Table: #{table.table_name} 
+						h3 #{table.name}
+						p Status: 
+							if (table.status === 'open') 
+								button#statusClosed.btn.btn-lg
+									span(class='glyphicon glyphicon-ok-circle glyphicon-lg')
+							else
+								button#statusOpen.btn.btn-lg
+									span(class='glyphicon glyphicon-remove-circle')
 						p Description: #{table.description}
-						p Status: #{table.table_status}
 						p Total Cost: $#{table.cost}
 						p Max Table Capacity: #{table.maxCapacity}
 						p Min $/Person: $#{table.cost / table.maxCapacity}
-						button
-							a(type='button' class='btn btn-sm' href='/venues/#{venue.id}/tables/#{table.id}/reservations/new') JOIN TABLE
+						button#joinTable
+							if (table.status === 'open')
+								a(type='button' class='btn btn-sm' href='/venues/#{venue.id}/tables/#{table.id}/reservations/new') JOIN TABLE
+							else
+								a(type='button' id='noJoin' class='btn btn-sm' href='#') JOIN TABLE
 					div.pic(class='col col-xs-offset-4')
 						img.tableImg(src=venue.pic2)
 

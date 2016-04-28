@@ -7,7 +7,7 @@ require('locus')
 
 
 
-router.use(helpers.currentUser);
+router.use(helpers.currentUserVenueTableReservation);
 
 
 //INDEX

@@ -21,6 +21,11 @@ body
       .container-fluid
         // Brand and toggle get grouped for better mobile display
         .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navCollapse' aria-expanded='false')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
 
           a.navbar-brand(href='/') Lonely Table
 
@@ -36,17 +41,17 @@ body
             li
               a(href='/contact') Contact  
 
-            if(currentUser)
-             li.dropdown.nav-pill
-              a#yourAccount.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+            if(user)
+             li#bigProblem.dropdown.nav-pill
+              a#yourAccount.dropdown-toggle.nav-pill(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
                 | Your Account 
                 span.caret
               ul.dropdown-menu
                 li
-                  a(href='/users/#{currentUser.id}') My Profile 
+                  a(href='/users/#{user.id}') My Profile 
                   //- user.id
                 li
-                  a(href='#') My Reservations
+                  a(href='/venues/#{}/tables/#{}/reservations') My Reservations
                 li
                   a(href='#') Inbox
                 li.divider(role='separator')
@@ -59,8 +64,8 @@ body
                |  | Sign in with Facebook
         // /.navbar-collapse
       // /.container-fluid
-
-
- block content
+ 
+  div#notLayout.container-fluid
+    block content
 
  
