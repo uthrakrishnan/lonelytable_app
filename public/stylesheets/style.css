@@ -44,7 +44,7 @@ body {
 }
 
 #yourAccount {
-	right: 350px;
+	right: 140px;
 }
 
 #fb_icon {
@@ -101,6 +101,19 @@ body {
 
 }
 
+.venueDescription {
+	display: inline-block;
+	position: relative;
+	left: 30px;
+	background-color: rgba(0, 0, 255, 0.2);
+	border: solid black 3px;
+	height: 100%;
+	width: 820px;
+
+	margin-bottom: 10px;
+
+}
+
 .dropdown {
 	position: absolute;
 	left: 380px;
@@ -111,6 +124,13 @@ body {
 	height: 100%;
 	width: 100%;
 	/*top: -55px;*/
+}
+
+#starsRev {
+	position: relative;
+	display: table;
+	background-color: black;
+	top: -296px;
 }
 
 .pic {

@@ -49,7 +49,7 @@ router.get('/facebook/callback', function(req,res,next){
       req.logIn(user, function(err) {
       if(err){
         req.flash("loginMessage", err)
-        res.redirect('/login');
+        res.redirect('/auth/login');
       }
       else{
         
@@ -63,6 +63,8 @@ router.get('/facebook/callback', function(req,res,next){
           }
           else {
             // Successful authentication, redirect home.
+            // res.locals.user = req.user;
+            eval(locus)
             res.redirect('/venues')
           }
         })
@@ -74,7 +76,7 @@ router.get('/facebook/callback', function(req,res,next){
 });
 
 router.get('/login', (req, res)=>{
-	res.render('auth/login', {message: req.flash('error')});
+	res.render('auth/login', {message: req.flash('loginMessage')});
 });
 
 

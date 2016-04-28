@@ -5,22 +5,22 @@ block content
 
 	//- h4 username: #{user.username}
 	h4 Venue: #{venue.name}
-	h4 date and time: 
 	h4 Max Capacity: #{table.maxCapacity}
 	h4 Seats Available: #{seatsAvailable}
 	h4#pledgePerSeat Pledge per Seat: #{table.cost / table.maxCapacity}
 
 
 
-	form(action='' method='POST')
+	form(action='/venues/#{venue.id}/tables/#{table.id}/reservations' method='POST')
 
 		h4 How many seats would you like to reserve?
 		input(type="range" id='seatsWanted' name='reservation[seats]' min='1' max=seatsAvailable value='1' required)
 		h3#seatsWantedView Seats: 1
 		br
-
+		//- input(type='text' name='reservation[pledge]')
 		h3#pledge Your Pledge: #{table.cost / table.maxCapacity}
+		input#pledgeInput(type="hidden" name='reservation[pledge]')
 		br
 
 
-		input(type="submit" value='Submit')
+		input(type="submit" value='Make Reservation' class='btn')
