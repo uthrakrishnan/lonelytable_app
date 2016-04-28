@@ -15,7 +15,7 @@ const Yelp  = require('yelp');
 const knex = require('./db/knex');
 const passport = require('passport');
 const flash = require('connect-flash');
-
+const helpers = require('./helpers/authHelpers');
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
@@ -38,6 +38,7 @@ app.use('/venues/:venue_id/tables', routes.tables)
 app.use('/venues/:venue_id/tables/:table_id/reservations', routes.reservations)
 
 //update Venues tables with Yelp reviews
+app.use(helpers.currentUser);
 
 var yelp = new Yelp({
   consumer_key: process.env.YELPCK,
@@ -69,7 +70,7 @@ getYelp().then(function() {
 
 
 //HOME static page
-app.get("/", helpers.currentUser, function(req, res){
+app.get("/", function(req, res){
   res.render('index');
 });
 
