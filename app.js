@@ -1,7 +1,10 @@
-require('dotenv').load()
+
 
 const express = require('express');
 const app = express();
+if (app.get('env') === 'development') {
+    require('dotenv').load();
+}
 
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
