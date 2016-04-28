@@ -3,18 +3,24 @@ const router = express.Router({mergeParams: true});
 const knex = require('../db/knex');
 const helpers = require('../helpers/authHelpers');
 
+
 require('locus')
 
-router.use(helpers.currentUser);
+
 router.use(helpers.ensureAuth);
+router.use(helpers.currentUser);
 
 
 //INDEX
 router.get('/', (req, res) => {
 	eval(locus)
-	//  knex('reservations').where('user_id', req.user.id).then((reservations) => {
-	// 	res.render('reservations/index', {reservations});
-	// });
+	 knex('tables').where({id: req.params.table_id}).first().then(table=>{
+		knex('venues').where({id: req.params.venue_id}).first().then(venue=>{
+				knex('reservations').where('user_id', req.user.id).then((reservations) => {
+						res.render('reservations/index', {venue, table, reservations, message: req.flash('newReservation')});
+			})
+		})
+	});
 });
 
 //NEW
@@ -59,13 +65,12 @@ router.post('/', (req, res) => {
 	eval(locus)
 	knex('reservations').insert({
 		table_id: +req.params.table_id,
-		// date: ,
-		user_id: req.user.id,
-		pledge: req.body.reservation.pledge,
+		user_id: +req.user.id,
+		pledge: +req.body.reservation.pledge,
 		seats: +req.body.reservation.seats 
 	}).then(()=>{
 		req.flash('newReservation', 'Added New reservation!');
-		res.redirect('/reservations');
+		res.redirect(`/venues/${req.params.venue_id}/tables/${req.params.table_id}/reservations`);
 	});
 });
 

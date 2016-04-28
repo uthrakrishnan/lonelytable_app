@@ -36,13 +36,14 @@ body
             li
               a(href='/contact') Contact  
 
-            li.dropdown.nav-pill
+            if(currentUser)
+             li.dropdown.nav-pill
               a#yourAccount.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
                 | Your Account 
                 span.caret
               ul.dropdown-menu
                 li
-                  a(href='/users/#{}') My Profile 
+                  a(href='/users/#{currentUser.id}') My Profile 
                   //- user.id
                 li
                   a(href='#') My Reservations
@@ -51,19 +52,11 @@ body
                 li.divider(role='separator')
                 li
                   a(href='/auth/logout') Log Out
-            button#fb_icon.btn.btn-facebook
-             a(href='/auth/facebook')
+            else 
+             button#fb_icon.btn.btn-facebook
+              a(href='/auth/facebook')
                //- i.fa.fa-facebook
                |  | Sign in with Facebook
-
-
-            
-            //if 
-        //- p
-        //-    button#fb_icon.btn.btn-facebook
-        //-     a(href='/auth/facebook')
-        //-      i.fa.fa-facebook
-        //-      |  | Connect with Facebook
         // /.navbar-collapse
       // /.container-fluid
 

@@ -1,3 +1,22 @@
 extends ../layout.jade
 
 block content
+	h1 Your Reservations
+	
+	p= message
+
+	table.table.table-bordered
+		tbody
+			tr
+				td Venue Name
+				td Table Name
+				td Date
+				td Seats Reserved
+				td Your Pledged Amount
+			each reservation in reservations
+				tr
+					td= venue.name
+					td= table.name
+					td= reservation.date
+					td= reservation.seats
+					td= reservation.pledge
