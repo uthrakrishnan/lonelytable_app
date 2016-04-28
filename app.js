@@ -25,7 +25,7 @@ app.set('view engine', 'jade');
 
 app.disable('x-powered-by');
 
-app.use(session({secret: process.env.SECRET}));
+app.use(session({secret: process.env.SECRET }));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -104,7 +104,7 @@ app.get('*', function(req, res){
   res.render('404');
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
 console.log("Server running, port 3000...")
 })
 
