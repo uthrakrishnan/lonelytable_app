@@ -20,12 +20,12 @@ exports.seed = function(knex, Promise) {
       knex('hours').insert({venue_id: 3, dayOfWeek: 6, opening: '22:00:00', closing: '03:00:00'}),
       knex('hours').insert({venue_id: 3, dayOfWeek: 7, opening: '22:00:00', closing: '03:00:00'}),
           // Inserts seed entries
-      knex('tables').insert({venue_id: 2, table_name: 'VIP Mezzanine', cost: 900, maxCapacity: 10, description: 'VIP table on the Mezzanine level', table_status: 'open'}),
-      knex('tables').insert({venue_id: 2, table_name: 'Main Floor', cost: 800, maxCapacity: 10, description: 'Roped off table in the front room.', table_status: 'open'}),
-      knex('tables').insert({venue_id: 2, table_name: 'Dance Floor', cost: 900, maxCapacity: 15, description: 'Roped off table off of the dance floor.', table_status: 'open'}),
-      knex('tables').insert({venue_id: 1, table_name: 'G4', cost: 600, maxCapacity: 8, description: 'Round standing table off the dance floor', table_status: 'open'}),
-      knex('tables').insert({venue_id: 1, table_name: 'G5', cost: 600, maxCapacity: 8, description: 'Round standing table off the dance floor', table_status: 'open'}),
-      knex('tables').insert({venue_id: 1, table_name: 'G6', cost: 600, maxCapacity: 8, description: 'Round standing table off the dance floor', table_status: 'open'})
+      knex('tables').insert({venue_id: 2, name: 'VIP Mezzanine', cost: 900, maxCapacity: 10, description: 'VIP table on the Mezzanine level', status: 'open'}),
+      knex('tables').insert({venue_id: 2, name: 'Main Floor', cost: 800, maxCapacity: 10, description: 'Roped off table in the front room.', status: 'open'}),
+      knex('tables').insert({venue_id: 2, name: 'Dance Floor', cost: 900, maxCapacity: 15, description: 'Roped off table off of the dance floor.', status: 'open'}),
+      knex('tables').insert({venue_id: 1, name: 'G4', cost: 600, maxCapacity: 8, description: 'Round standing table off the dance floor', status: 'open'}),
+      knex('tables').insert({venue_id: 1, name: 'G5', cost: 600, maxCapacity: 8, description: 'Round standing table off the dance floor', status: 'open'}),
+      knex('tables').insert({venue_id: 1, name: 'G6', cost: 600, maxCapacity: 8, description: 'Round standing table off the dance floor', status: 'open'})
     );
   })
 };

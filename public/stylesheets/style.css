@@ -11,6 +11,10 @@ body {
     color: #FFFFFF;
 }
 
+#newUser {
+  color: black;
+}
+
 #copywrite, #footer {
   font-size: medium;
   text-align: center;
@@ -135,4 +139,11 @@ body {
 	height: 100%;
 	width: 100%;
 	/*top: -55px;*/
+}
+
+#large {
+  width: 50%;
+  height: 100px;
+  vertical-align: text-top;
+  word-wrap: normal;
 }

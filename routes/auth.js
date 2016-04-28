@@ -58,7 +58,7 @@ router.get('/facebook/callback', function(req,res,next){
         // eval(require('locus'))
         knex('users').where('fb_id', user.fb_id).first().then(user=>{
           // eval(require('locus'))
-          if (!user.username){
+          if (!user.alias){
             res.render('users/new', {user: user});
           }
           else {
