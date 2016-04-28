@@ -26,6 +26,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/auth', routes.auth)
+app.use('/users', routes.users)
 app.use('/venues', routes.venues)
 app.use('/venues/:venue_id/tables', routes.tables)
 app.use('/venues/:venue_id/tables/:table_id/reservations', routes.reservations)
