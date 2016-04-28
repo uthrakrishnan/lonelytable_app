@@ -69,7 +69,7 @@ getYelp().then(function() {
 
 
 //HOME static page
-app.get("/", function(req, res){
+app.get("/", helpers.currentUser, function(req, res){
   res.render('index');
 });
 
