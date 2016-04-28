@@ -69,7 +69,6 @@ var getYelp=function(){
   });
 };
 getYelp().then(function() {
-  console.log("Done updating yelp data!");
 });
 
 
