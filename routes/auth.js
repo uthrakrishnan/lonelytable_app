@@ -15,8 +15,8 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 passport.use(new FacebookStrategy({
 	clientID: process.env.FACEBOOK_KEY,
 	clientSecret: process.env.FACEBOOK_SECRET,
-  callbackURL: "https://lonelytable-app.herokuapp.com/auth/facebook/callback",
-	// callbackURL: callback,
+  // callbackURL: "https://lonelytable-app.herokuapp.com/auth/facebook/callback",
+	callbackURL: "http://localhost:3000/auth/facebook/callback",
   	scope: ['email', 'public_profile']
   }, (accessToken, refreshToken, profile, done)=>{
   	knex('users').where('fb_id', profile.id).first().then(user=>{
@@ -71,7 +71,7 @@ router.get('/facebook/callback', function(req,res,next){
           else {
             // Successful authentication, redirect home.
             // res.locals.user = req.user;
-         
+
             res.redirect('/')
           }
         })
