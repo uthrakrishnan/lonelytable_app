@@ -5,11 +5,17 @@ const knex = require('../db/knex');
 const helpers = require('../helpers/authHelpers');
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
-
+// eval(require("locus"))
+// if(app.get("env") === "development") {
+//   var callback = "http://localhost:3000/auth/facebook/callback"
+// } else {
+//   var callback = "https://lonelytable-app.herokuapp.com/auth/facebook/callback"
+// }
 
 passport.use(new FacebookStrategy({
 	clientID: process.env.FACEBOOK_KEY,
 	clientSecret: process.env.FACEBOOK_SECRET,
+  // callbackURL: "https://lonelytable-app.herokuapp.com/auth/facebook/callback",
 	callbackURL: "http://localhost:3000/auth/facebook/callback",
   	scope: ['email', 'public_profile']
   }, (accessToken, refreshToken, profile, done)=>{
@@ -42,6 +48,7 @@ passport.deserializeUser((id, done)=>{
 router.get('/facebook', passport.authenticate('facebook'));
 
 router.get('/facebook/callback', function(req,res,next){
+  // console.log("are we in here?")
   passport.authenticate('facebook',function(err, user) {
     
     if(err) return next(err)
@@ -64,8 +71,8 @@ router.get('/facebook/callback', function(req,res,next){
           else {
             // Successful authentication, redirect home.
             // res.locals.user = req.user;
-            eval(locus)
-            res.redirect('/venues')
+
+            res.redirect('/')
           }
         })
       }

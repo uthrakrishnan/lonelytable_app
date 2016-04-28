@@ -1,7 +1,10 @@
-require('dotenv').load()
+
 
 const express = require('express');
 const app = express();
+if (app.get('env') === 'development') {
+    require('dotenv').load();
+}
 
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
@@ -13,7 +16,7 @@ const Yelp  = require('yelp');
 const knex = require('./db/knex');
 const passport = require('passport');
 const flash = require('connect-flash');
-
+const helpers = require('./helpers/authHelpers');
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
@@ -23,9 +26,11 @@ app.set('view engine', 'jade');
 
 app.disable('x-powered-by');
 
+
 app.use(cookieParser())
 
 app.use(session({secret: process.env.SECRET}));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -38,6 +43,7 @@ app.use('/venues/:venue_id/tables', routes.tables)
 app.use('/venues/:venue_id/tables/:table_id/reservations', routes.reservations)
 
 //update Venues tables with Yelp reviews
+app.use(helpers.currentUserVenueTableReservation);
 
 var yelp = new Yelp({
   consumer_key: process.env.YELPCK,
@@ -103,7 +109,7 @@ app.get('*', function(req, res){
   res.render('404');
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
 console.log("Server running, port 3000...")
 })
 
