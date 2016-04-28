@@ -71,8 +71,8 @@ router.get('/facebook/callback', function(req,res,next){
           else {
             // Successful authentication, redirect home.
             // res.locals.user = req.user;
-            eval(locus)
-            res.redirect('/venues')
+         
+            res.redirect('/index')
           }
         })
       }
