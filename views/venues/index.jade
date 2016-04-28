@@ -57,10 +57,11 @@ block content
 							p Location: #{venue.street_address}, #{venue.city}, #{venue.zipcode}
 							p Music: #{venue.music}
 							p Clientele: #{venue.clientele}
-							img(src=venue.stars)
-							p # of reviews: #{venue.reviews}
 							br
 							a(href='/venues/#{venue.id}/tables')
 								button#selectVenueBtn Select/Details
 						div.pic(class='col col-sm-8')
 							img.venueImg(src=venue.pic1)
+							div#yelp
+								img(src=venue.stars)
+								p # of reviews: #{venue.reviews}

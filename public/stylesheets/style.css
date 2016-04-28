@@ -90,6 +90,7 @@ body {
 }
 
 
+
 /*	VENUES */
 
 #filterDiv {
@@ -153,6 +154,13 @@ body {
 
 .pic {
 	height: 100%;
+}
+
+#yelp {
+	background-color: black;
+	display: inline-block;
+	position: absolute;
+	left: 15px;
 }
 
 /*	TABLES  */
