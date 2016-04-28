@@ -25,7 +25,7 @@ app.set('view engine', 'jade');
 
 app.disable('x-powered-by');
 
-app.use(session({secret: process.env.SECRET}));
+app.use(session({secret: process.env.SESSION_SECRET }));
 app.use(passport.initialize());
 app.use(passport.session());
 
