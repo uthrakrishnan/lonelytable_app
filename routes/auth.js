@@ -18,8 +18,7 @@ passport.use(new FacebookStrategy({
   			return done(null, user);
   		}
   		else {
-        eval(require('locus'))
-  			knex('users').insert({fb_id: profile.id, alias: profile.displayName}, '*').then(user=>{
+  			knex('users').insert({fb_id: profile.id, username: profile.displayName}, '*').then(user=>{
   				return done(null, user[0]);
   			});
   		}
@@ -58,17 +57,17 @@ router.get('/facebook/callback', function(req,res,next){
 
         // eval(require('locus'))
         knex('users').where('fb_id', user.fb_id).first().then(user=>{
-          eval(require('locus'))
+          // eval(require('locus'))
           if (!user.username){
             res.render('users/new', {user: user});
           }
           else {
+            // Successful authentication, redirect home.
             res.redirect('/venues')
           }
         })
       }
     })
-      // Successful authentication, redirect home.
 
     }
   })(req, res, next)
