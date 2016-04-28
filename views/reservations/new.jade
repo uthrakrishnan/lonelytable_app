@@ -14,8 +14,8 @@ block content
 	form(action='/venues/#{venue.id}/tables/#{table.id}/reservations' method='POST')
 
 		h4 How many seats would you like to reserve?
-		input(type="range" id='seatsWanted' name='reservation[seats]' min='1' max=seatsAvailable value='1' required)
-		h3#seatsWantedView Seats: 1
+		input(type="range" id='seatsWanted' name='reservation[seats]' min='0' max=seatsAvailable value='1' required)
+		h3#seatsWantedView Seats: 0
 		br
 		//- input(type='text' name='reservation[pledge]')
 		h3#pledge Your Pledge: #{table.cost / table.maxCapacity}

@@ -5,50 +5,51 @@ block content
 	
 	div.container-fluid
 		div.row
-			div#filterDiv(class='col col-md-3')
-				h3 Filters
+			div#filterDiv(class='col col-sm-3')
+				div.row
+					h3 Filters
 
-				form(action='/venues/filter' method='GET')
-					input(type="text" name='filter[venueName]' placeholder='venue name OR key words')
-					br
-					br
-					input(type="integer" name='filter[seatsNeeded]' placeholder='How Many Seats do you need?')
-					br
-					br
-					//- input(type="integer" name='filter[tables]' placeholder='tables available')
-					input(type="text" name='filter[maxPledge]' placeholder='max $ you want to spend')
-					//- input(type="checkbox" name='filter[tableAvailable]') 
-					h4 Table Available
-					form
-						label Yes
-							input(type="checkbox" name='filter[table_status]' value='open')
-					h4 Number of Reviews
-					form
-						label	<10
-							input(type="checkbox" name='filter[reviews]' value='<10')
+					form(action='/venues/filter' method='GET')
+						input(type="text" name='filter[venueName]' placeholder='venue name OR key words')
 						br
-						label 10 - 100
-							input(type="checkbox" name='filter[reviews]' value='10-100')
 						br
-						label >100
-							input(type="checkbox" name='filter[reviews]' value='>100')
+						input(type="integer" name='filter[seatsNeeded]' placeholder='How Many Seats do you need?')
 						br
-					h4 Stars
-					form
-						label 5
-							input(type="radio" name='filter[stars]' value='5')
-						label 4
-							input(type="radio" name='filter[stars]' value='4')
-						label 3
-							input(type="radio" name='filter[stars]' value='3')
-						label 2
-							input(type="radio" name='filter[stars]' value='2')
-						label 1
-							input(type="radio" name='filter[stars]' value='1')
 						br
-					input(type='submit' value='Search' class='btn btn-primary')
+						//- input(type="integer" name='filter[tables]' placeholder='tables available')
+						input(type="text" name='filter[maxPledge]' placeholder='max $ you want to spend')
+						//- input(type="checkbox" name='filter[tableAvailable]') 
+						h4 Table Available
+						form
+							label Yes
+								input(type="checkbox" name='filter[table_status]' value='open')
+						h4 Number of Reviews
+						form
+							label	<10
+								input(type="checkbox" name='filter[reviews]' value='<10')
+							br
+							label 10 - 100
+								input(type="checkbox" name='filter[reviews]' value='10-100')
+							br
+							label >100
+								input(type="checkbox" name='filter[reviews]' value='>100')
+							br
+						h4 Stars
+						form
+							label 5
+								input(type="radio" name='filter[stars]' value='5')
+							label 4
+								input(type="radio" name='filter[stars]' value='4')
+							label 3
+								input(type="radio" name='filter[stars]' value='3')
+							label 2
+								input(type="radio" name='filter[stars]' value='2')
+							label 1
+								input(type="radio" name='filter[stars]' value='1')
+							br
+						input(type='submit' value='Search' class='btn btn-primary')
 
-			div.venueItems(class='col col-md-9')
+			div.venueItems(class='col col-sm-9')
 				each venue in venues
 					div.venueListDiv(class='row')
 						div.info(class='col col-sm-4')
@@ -59,6 +60,7 @@ block content
 							img(src=venue.stars)
 							p # of reviews: #{venue.reviews}
 							br
-							a(href='/venues/#{venue.id}/tables') More...
+							a(href='/venues/#{venue.id}/tables')
+								button#selectVenueBtn Select/Details
 						div.pic(class='col col-sm-8')
 							img.venueImg(src=venue.pic1)

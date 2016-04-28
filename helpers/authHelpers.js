@@ -12,15 +12,20 @@ module.exports = {
 
 			knex('tables').where({id: req.params.table_id}).first().then(table=>{
 				knex('venues').where({id: req.params.venue_id}).first().then(venue=>{
-					knex('reservations').where('user_id', req.user.id).then((reservations) => {
 					res.locals.table = table;
 					res.locals.venue = venue;
-					res.locals.userReservations = reservations;
-					})
+					if(req.user) {
+						knex('reservations').where('user_id', req.user.id).then((reservations) => {
+						res.locals.userReservations = reservations;
+						return next();
+						})
+					}
+					else {
+						return next();
+					}
 				})
 			});
 			// delete res.locals.currentUserVenueTableReservation.password;
-			return next();
 		}
 	},
 

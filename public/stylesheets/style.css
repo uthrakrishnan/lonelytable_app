@@ -7,8 +7,16 @@ h1, h3 {
 body {
     background-color: #3f0587;
     margin: 0 auto;
-    max-width: 850px;
     color: #FFFFFF;
+}
+
+.notLayout {
+    max-width: 850px;	
+}
+
+#bigProblem {
+	position: absolute;
+	right: 0;
 }
 
 #newUser {
@@ -43,15 +51,15 @@ body {
   background-color: rgba(0,0,0,0.5);
 }
 
-#yourAccount {
+/*#yourAccount, #yourAccount > .dropdown-menu {
 	right: 140px;
-}
+}*/
 
 #fb_icon {
 	position: absolute;
 	top: 8px;
 	right: 8px;
-  background-color: #3b5998;
+  	background-color: #3b5998;
 }
 
 #fb_icon > a {
@@ -61,6 +69,10 @@ body {
 #siteNavBar {
   background:rgba(0,0,0,0.3);
   border-color: transparent;
+}
+
+#selectVenueBtn {
+	margin-bottom: 15px;
 }
 
 #navBrand {
@@ -82,52 +94,57 @@ body {
 
 #filterDiv {
 	background-color: rgba(0, 0, 255, 0.3);
-	float: left;
 	text-align: center;
 	border: black solid 3px;
+	margin-bottom: 10px;
+	/*display: -webkit-box;*/
+}
+
+#filterDiv  h3, h4 {
+	text-align: center;
 }
 
 #venueInTables {
+	display: inline-block;
 	background-color: rgba(0, 0, 255, 0.7);
 }
 
 .venueListDiv {
 	position: relative;
-	left: 20px;
 	background-color: rgba(0, 0, 255, 0.2);
 	border: solid black 3px;
 	width: 100%;
-
+	margin: 0 auto;
 	margin-bottom: 10px;
 
+}
+
+#talbesIndex {
+	margin: 0 auto;
 }
 
 .venueDescription {
 	display: inline-block;
 	position: relative;
-	left: 30px;
 	background-color: rgba(0, 0, 255, 0.2);
 	border: solid black 3px;
 	height: 100%;
-	width: 820px;
+	width: 100%;
 
 	margin-bottom: 10px;
 
 }
 
-.dropdown {
-	position: absolute;
-	left: 380px;
-}
 
 .venueImg {
 	position: relative;
 	height: 100%;
 	width: 100%;
+	margin-bottom: 15px;
 	/*top: -55px;*/
 }
 
-#starsRev {
+#starsReviewsiews {
 	position: relative;
 	display: table;
 	background-color: black;
@@ -145,11 +162,9 @@ body {
 .tableListDiv {
 	display: inline-block;
 	position: relative;
-	left: 30px;
 	background-color: rgba(0, 0, 255, 0.2);
 	border: solid black 3px;
-	height: 300px;
-	width: 820px;
+	width: 100%;
 
 	margin-bottom: 10px;
 
@@ -167,4 +182,20 @@ body {
   height: 100px;
   vertical-align: text-top;
   word-wrap: normal;
+}
+
+.glyphicon-ok-circle {
+	color: green;
+}
+
+.glyphicon-remove-circle {
+	color: red;
+}
+
+#statusClosed, #statusOpen {
+	background-color: rgba(0,0,0,0);
+}
+
+#tableFull {
+	color: red;
 }
