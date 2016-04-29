@@ -1,4 +1,4 @@
-h1, h3 {
+h1, h3, h6, h2 {
 	text-align: center;
 }
 
@@ -267,4 +267,10 @@ body {
 
 .user-info h4 {
   text-align: left;
+}
+
+/*My Res*/
+
+#yourReservation {
+	background-color: black;
 }

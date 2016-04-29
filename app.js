@@ -40,6 +40,7 @@ app.use(flash());
 app.use('/auth', routes.auth)
 app.use('/users', routes.users)
 app.use('/venues', routes.venues)
+app.use('/myres', routes.myres)
 app.use('/venues/:venue_id/tables', routes.tables)
 app.use('/venues/:venue_id/tables/:table_id/reservations', routes.reservations)
 

@@ -53,7 +53,7 @@ body
                   a(href='/users/#{user.id}') My Profile 
                   //- user.id
                 li
-                  a(href='/venues/#{}/tables/#{}/reservations') My Reservations
+                  a(href='/myres') My Reservations
                 li
                   a(href='#') Inbox
                 li.divider(role='separator')
@@ -68,10 +68,11 @@ body
       // /.container-fluid
  
   div#notLayout.container-fluid
-    div#welcome
-      h2 Welcome, #{user.username}
-    div#line
-      hr
+    if(user)
+      div#welcome
+        h2 Welcome, #{user.username}
+      div#line
+        hr
     block content
 
  
