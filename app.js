@@ -2,7 +2,7 @@
 
 const express = require('express');
 const app = express();
-if (app.get('env') === 'development') {
+if (process.env.NODE_ENV === 'development') {
     require('dotenv').load();
 }
 
