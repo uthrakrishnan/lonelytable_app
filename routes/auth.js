@@ -24,6 +24,7 @@ passport.use(new FacebookStrategy({
   			return done(null, user);
   		}
   		else {
+        eval(locus)
   			knex('users').insert({fb_id: profile.id, username: profile.displayName}, '*').then(user=>{
   				return done(null, user[0]);
   			});

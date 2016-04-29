@@ -1,4 +1,4 @@
-h1, h3 {
+h1, h3, h6, h2 {
 	text-align: center;
 }
 
@@ -45,7 +45,12 @@ body {
 }
 
 #newUser {
-  color: black;
+  color: white;
+  text-align: center;
+}
+
+#newUser input{
+	color:black;
 }
 
 #copywrite, #footer {
@@ -76,14 +81,10 @@ body {
   background-color: rgba(0,0,0,0.5);
 }
 
-/*#yourAccount, .dropdown-menu {
-	right: 15px;
-}*/
-
 #fb_icon {
 	position: absolute;
-	top: 8px;
-	right: 8px;
+	top: 10px;
+	right: 70px;
   	background-color: #3b5998;
 }
 
@@ -105,6 +106,10 @@ body {
   color:#CCCCCC;
 }
 
+#bigProblem > a {
+  color: #3b5998;
+}
+
 #navCollapse > ul > li > a {
   color:#CCCCCC;
 }
@@ -118,9 +123,17 @@ body {
   margin:0 auto;
   margin-bottom: 20px;
   text-align:center;
+}
 
+#yourAccount {
+  color: #3b5998;
 }
   
+#profile {
+  background:rgba(0,0,0,0.3);
+  text-align: center;
+}
+
 #map, #pano {
   float: left;
   height: 250px;
@@ -181,7 +194,7 @@ body {
 	height: 100%;
 	width: 100%;
 	margin-bottom: 15px;
-	/*top: -55px;*/
+	top: -80px;
 }
 
 #starsReviewsiews {
@@ -191,16 +204,35 @@ body {
 	top: -296px;
 }
 
+.venueName {
+	margin: 0 auto;
+	background-color: black;
+	margin-bottom: 10px;
+}
+
 .pic {
+	position: relative;
+	top: 90px;
 	height: 100%;
 }
 
 #yelp {
-	background-color: transparent;
+	background-color: rgba(0,0,0,0.7);
 	display: inline-block;
 	position: absolute;
-	left: 25px;
-  top: 10px;
+	top: -80px;
+	left: 15px;
+    text-align: center;
+}
+
+#yelp1 {
+	position: relative;
+	top: 7px;
+}
+
+.findTable {
+	position: relative;
+	bottom: 7px;
 }
 
 #filterDiv  h4 {
@@ -239,7 +271,17 @@ body {
 	position: relative;
 	height: 100%;
 	width: 100%;
-	/*top: -55px;*/
+	top: -90px;
+}
+
+/*#tablesPage > h2, h3, h4, h5{
+	background-color: black;
+}*/
+
+#description {
+	max-width: 500px;
+	margin: 0 auto;
+	text-align: justify;
 }
 
 #large {
@@ -267,4 +309,27 @@ body {
 
 .user-info h4 {
   text-align: left;
+}
+
+/*My Res*/
+
+#yourReservation,  #atYourTableMyRes  {
+	background-color: black;
+}
+
+.atYourTableDiv {
+	display: inline-block;
+	width: 870px;
+}
+
+.blurb {
+	display: inline-block;
+	width: 538px;
+	height: 108%;
+	word-wrap: break-word;
+	border: none;
+}
+
+#newReservationForm {
+	text-align: center;
 }

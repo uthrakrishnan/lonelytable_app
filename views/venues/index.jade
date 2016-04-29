@@ -78,14 +78,17 @@ block content
 			div.venueItems(class='col col-sm-9')
 				each venue in venues
 					div.venueListDiv(class='row')
+						div.row.venueName
+							div(class='col-sm-10')
+								h3 #{venue.name} 
 						div.info(class='col col-sm-4')
-							h3 #{venue.name} 
-							p #{venue.street_address}<br >#{venue.city} (#{venue.zipcode})
+							p Address: #{venue.street_address}<br >#{venue.city} (#{venue.zipcode})
 							p Music: #{venue.music}
 							p Clientele: #{venue.clientele}
-							a.btn.btn-primary(href='/venues/#{venue.id}/tables', role='button') Find your table now
+							a.btn.btn-primary.findTable(href='/venues/#{venue.id}/tables', role='button') Find your table now
 						div.pic(class='col col-sm-8')
 							img.venueImg(src=venue.pic1)
 							div#yelp
-								img(src=venue.stars)
-								p #{venue.reviews} reviews
+								div#yelp1
+									img(src=venue.stars)
+									p #{venue.reviews} reviews
