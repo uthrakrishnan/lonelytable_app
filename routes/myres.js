@@ -15,7 +15,24 @@ router.get('/', (req, res)=>{
 	knex('reservations').where('user_id', req.user.id).then(reservations=>{
 		knex('tables').where('id', reservations[0].table_id).first().then(table=>{
 			knex('venues').where('id', table.venue_id).first().then(venue=>{
-				res.render('myres/index', {venue, table, reservations, count: [1,2,3,4,5]})
+				var atTable = [];
+
+				knex('reservations').join('users', 'users.id', 'reservations.user_id').then(currentUsers=>{
+
+					currentUsers.reduce((start, next)=>{
+						if (start.indexOf(next.user_id) === -1) {
+						// eval(locus)
+							atTable.push(next)
+							start.push(next.user_id);
+							return start;
+						}
+						else {
+							return start;
+						}
+					}, [])
+					// eval(locus)
+					res.render('myres/index', {atTable, venue, table, reservations})
+				});
 			})
 		})
 	})

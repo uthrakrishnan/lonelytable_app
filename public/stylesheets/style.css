@@ -45,7 +45,12 @@ body {
 }
 
 #newUser {
-  color: black;
+  color: white;
+  text-align: center;
+}
+
+#newUser input{
+	color:black;
 }
 
 #copywrite, #footer {
@@ -261,9 +266,9 @@ body {
 	top: -90px;
 }
 
-#tablesPage > h2, h3, h4, h5{
+/*#tablesPage > h2, h3, h4, h5{
 	background-color: black;
-}
+}*/
 
 #description {
 	max-width: 500px;
@@ -300,6 +305,23 @@ body {
 
 /*My Res*/
 
-#yourReservation {
+#yourReservation,  #atYourTableMyRes  {
 	background-color: black;
+}
+
+.atYourTableDiv {
+	display: inline-block;
+	width: 870px;
+}
+
+.blurb {
+	display: inline-block;
+	width: 538px;
+	height: 108%;
+	word-wrap: break-word;
+	border: none;
+}
+
+#newReservationForm {
+	text-align: center;
 }

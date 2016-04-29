@@ -10,7 +10,7 @@ block content
 			each reservation, count in reservations
 					tr
 						td
-							h2 Reservation ##{count}
+							h2 Reservation ##{count+1}
 					tr
 						td
 							h3 You are going to: #{venue.name}
@@ -29,3 +29,19 @@ block content
 						else
 							td
 								h3 Please wait while more people fill up your table!
+
+	br
+	h2#atYourTableMyRes Who Will Be At Your Table?
+	div.atYourTableDiv
+		table.table.table-bordered
+			tbody
+				tr
+					td Alias
+					td Their Picture
+					td About them..
+				each user in atTable
+					tr
+						td= user.alias
+						td
+							img(src=user.profile_pic)
+						td.blurb= user.blurb

@@ -11,7 +11,7 @@ block content
 
 
 
-	form(action='/venues/#{venue.id}/tables/#{table.id}/reservations' method='POST')
+	form#newReservationForm(action='/venues/#{venue.id}/tables/#{table.id}/reservations' method='POST')
 
 		h4 How many seats would you like to reserve?
 		input(type="range" id='seatsWanted' name='reservation[seats]' min='0' max=seatsAvailable value='1' required)
