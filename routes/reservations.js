@@ -13,7 +13,6 @@ router.use(helpers.currentUserVenueTableReservation);
 
 //INDEX
 router.get('/', (req, res) => {
-	// eval(locus)
 	 knex('tables').where({id: req.params.table_id}).first().then(table=>{
 		knex('venues').where({id: req.params.venue_id}).first().then(venue=>{
 				knex('reservations').where('user_id', req.user.id).then((reservations) => {
@@ -24,7 +23,6 @@ router.get('/', (req, res) => {
 							knex('reservations').join('users', 'users.id', 'reservations.user_id').then(reservations=>{
 
 								reservations.reduce((start, next)=>{
-									// eval(locus)
 									if (start.indexOf(next.user_id) === -1) {
 										atTable.push(next)
 										start.push(next.user_id);
@@ -49,9 +47,7 @@ router.get('/new', (req, res) => {
 	knex('tables').where({id: req.params.table_id}).first().then(table=>{
 		knex('venues').where({id: req.params.venue_id}).first().then(venue=>{
 			knex('reservations').where({table_id: req.params.table_id}).then(reservations=>{
-				// eval(locus)
 				var seatsTaken = reservations.reduce((start, next)=>{
-					// eval(locus)
 					return start += next.seats
 
 				}, 0);
@@ -84,7 +80,6 @@ router.get('/:id/edit', (req, res) => {
 //POST
 router.post('/', (req, res) => {
 	var now = new Date();
-	// eval(locus)
 	knex('reservations').insert({
 		table_id: +req.params.table_id,
 		user_id: +req.user.id,
@@ -100,7 +95,6 @@ router.post('/', (req, res) => {
 					return start += next.seats;
 				}, 0);
 				if (peopleAtTable === table.maxCapacity) {
-				eval(locus)
 					knex('tables').where('id', req.params.table_id).update({status: 'closed'}).then(()=>{
 						req.flash('newReservation', 'Your reservation was successfully created!');
 						res.redirect(`/venues/${req.params.venue_id}/tables/${req.params.table_id}/reservations`);
