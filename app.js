@@ -17,7 +17,8 @@ const knex = require('./db/knex');
 const passport = require('passport');
 const flash = require('connect-flash');
 const helpers = require('./helpers/authHelpers');
-const moment = require('moment')
+app.locals.moment = require('moment')
+
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
