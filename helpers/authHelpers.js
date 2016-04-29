@@ -4,7 +4,7 @@ require('locus')
 
 module.exports = {
 	currentUserVenueTableReservation: (req, res, next) => {
-		if(!req.isAuthenticated) {
+		if(!req.isAuthenticated()) {
 			return next();
 		}
 		else {
