@@ -98,9 +98,13 @@ body {
   margin:0 auto;
   margin-bottom: 20px;
   text-align:center;
-
 }
   
+#profile {
+  background:rgba(0,0,0,0.3);
+  text-align: center;
+}
+
 #map, #pano {
   float: left;
   height: 250px;

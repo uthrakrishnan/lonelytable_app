@@ -1,16 +1,17 @@
 extends ../layout.jade
 
 block content
-  h1 Your Account Profile
-  div(class="profile-pic")
-    img(src='#{user.profile_pic}')
-  div(class="user-info")
-    h4 Alias: 
-    p #{user.alias}
-    h4 DOB: 
-    p #{user.dob}
-    h4 About Me: 
-    p #{user.blurb}
-  br
-  br
-  a(href="/users/#{user.id}/edit", class="btn btn-large btn-primary") Edit My Account Info
+  .row
+    .static.col-xs-3
+    .static.col-xs-6#profile
+      h3 Your Account
+      img.img-rounded(src='#{user.profile_pic}', width='175', height='175', vspace='10')
+      div
+        h2 #{user.alias}
+        p Birthday: 
+        h4 #{user.dob}
+        p About Me: 
+        h4 #{user.blurb}
+        a(href="/users/#{user.id}/edit", class="btn btn-large btn-primary") Edit Your Account
+        p
+    .static.col-xs-3
