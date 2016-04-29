@@ -68,10 +68,11 @@ body
       // /.container-fluid
  
   div#notLayout.container-fluid
-    div#welcome
-      h2 Welcome, #{user.username}
-    div#line
-      hr
+    if(user)
+      div#welcome
+        h2 Welcome, #{user.username}
+      div#line
+        hr
     block content
 
  

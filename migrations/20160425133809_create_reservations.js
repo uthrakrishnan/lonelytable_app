@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     t.increments(),
     t.integer('table_id').unsigned().index().references('tables.id').notNullable(),
     t.date('date');
-    t.integer('user_id').unsigned().index().references('users.id').notNullable(),
+    t.integer('user_id').unsigned().index().references('users.id').notNullable().onDelete('cascade'),
     t.integer('pledge')
     t.integer('seats')
   })
