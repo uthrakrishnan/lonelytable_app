@@ -7,10 +7,10 @@ const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 
 // eval(require("locus"))
-if(process.env.NODE_ENV === "development") {
-  var callback = "http://localhost:3000/auth/facebook/callback"
-} else {
+if(process.env.NODE_ENV === "production") {
   var callback = "https://lonelytable-app.herokuapp.com/auth/facebook/callback"
+} else {
+  var callback = "http://localhost:3000/auth/facebook/callback"
 }
 
 passport.use(new FacebookStrategy({

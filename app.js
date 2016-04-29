@@ -2,14 +2,14 @@
 
 const express = require('express');
 const app = express();
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV !== 'production') {
     require('dotenv').load();
 }
 
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const morgan = require('morgan');
-const cookieParser = require('cookie-parser')
+// const cookieParser = require('cookie-parser')
 const session = require('cookie-session');
 const routes = require('./routes/index');
 const Yelp  = require('yelp');
@@ -29,7 +29,7 @@ app.set('view engine', 'jade');
 app.disable('x-powered-by');
 
 
-app.use(cookieParser())
+// app.use(cookieParser())
 
 app.use(session({secret: process.env.SECRET}));
 
