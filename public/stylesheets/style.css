@@ -225,3 +225,7 @@ body {
 #tableFull {
 	color: red;
 }
+
+.user-info h4 {
+  text-align: left;
+}

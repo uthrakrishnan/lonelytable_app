@@ -2,4 +2,15 @@ extends ../layout.jade
 
 block content
   h1 Your Account Profile
-  
+  div(class="profile-pic")
+    img(src='#{user.profile_pic}')
+  div(class="user-info")
+    h4 Alias: 
+    p #{user.alias}
+    h4 DOB: 
+    p #{user.dob}
+    h4 About Me: 
+    p #{user.blurb}
+  br
+  br
+  a(href="/users/#{user.id}/edit", class="btn btn-large btn-primary") Edit My Account Info
