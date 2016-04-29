@@ -17,7 +17,28 @@ router.get('/', (req, res) => {
 	 knex('tables').where({id: req.params.table_id}).first().then(table=>{
 		knex('venues').where({id: req.params.venue_id}).first().then(venue=>{
 				knex('reservations').where('user_id', req.user.id).then((reservations) => {
-						res.render('reservations/index', {venue, table, reservations, message: req.flash('newReservation')});
+
+
+						var atTable = [];
+
+							knex('reservations').join('users', 'users.id', 'reservations.user_id').then(reservations=>{
+
+								reservations.reduce((start, next)=>{
+									// eval(locus)
+									if (start.indexOf(next.user_id) === -1) {
+										atTable.push(next)
+										start.push(next.user_id);
+										return start;
+									}
+									else {
+										return start;
+									}
+								}, [])
+
+
+								res.render('reservations/index', {atTable, venue, table, reservations, message: req.flash('newReservation')});
+							})
+
 			})
 		})
 	});
@@ -81,12 +102,12 @@ router.post('/', (req, res) => {
 				if (peopleAtTable === table.maxCapacity) {
 				eval(locus)
 					knex('tables').where('id', req.params.table_id).update({status: 'closed'}).then(()=>{
-						req.flash('newReservation', 'Reservation created successfully!');
+						req.flash('newReservation', 'Your reservation was successfully created!');
 						res.redirect(`/venues/${req.params.venue_id}/tables/${req.params.table_id}/reservations`);
 					});
 				}
 				else {
-					req.flash('newReservation', 'Reservation created successfully');
+					req.flash('newReservation', 'Your reservation was successfully created!');
 					res.redirect(`/venues/${req.params.venue_id}/tables/${req.params.table_id}/reservations`);
 				}
 			})
