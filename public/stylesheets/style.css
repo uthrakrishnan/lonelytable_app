@@ -15,17 +15,37 @@ body {
   text-align: left;
 }
 
+#welcome {
+	position: relative;
+	top: -20px;
+	display: inline-block;
+}
+
 .notLayout {
     max-width: 850px;	
 }
 
+#line {
+	margin-top: -30px;
+	margin-bottom: 40px;
+}
+
 #bigProblem {
 	position: absolute;
-	right: 0;
+	z-index: 9999999;
+	display: inline-block;
+	right: 15px;
+	top: 75px;
+	background-color: white;
+	color: black;
+}
+
+#bigProblem > .dropdown-menu {
+	position: relative;
 }
 
 #newUser {
-  color: black;
+  color: gray;
 }
 
 #copywrite, #footer {
@@ -56,10 +76,6 @@ body {
   background-color: rgba(0,0,0,0.5);
 }
 
-/*#yourAccount, #yourAccount > .dropdown-menu {
-	right: 140px;
-}*/
-
 #fb_icon {
 	position: absolute;
 	top: 8px;
@@ -85,6 +101,10 @@ body {
   color:#CCCCCC;
 }
 
+#bigProblem > a {
+  color: #3b5998;
+}
+
 #navCollapse > ul > li > a {
   color:#CCCCCC;
 }
@@ -98,6 +118,10 @@ body {
   margin:0 auto;
   margin-bottom: 20px;
   text-align:center;
+}
+
+#yourAccount {
+  color: #3b5998;
 }
   
 #profile {
@@ -115,7 +139,9 @@ body {
 /*	VENUES */
 
 #filterDiv {
-	background:rgba(0,0,0,0.3);
+	background-color: rgba(200, 200, 200, 0.2);
+	/*background:rgba(0,0,0,0.3);*/
+
 	text-align: center;
 /*	border: black solid 3px;*/
 	margin-bottom: 10px;
@@ -183,6 +209,23 @@ body {
 	position: absolute;
 	left: 25px;
   top: 10px;
+}
+
+#filterDiv  h4 {
+	color: black;
+}
+
+#filterDiv input {
+	color: black;
+}
+
+#filterDiv form form label {
+	color: black;
+}
+
+.reviewsCheckbox {
+	position: absolute;
+	right: 35px;
 }
 
 /*	TABLES  */

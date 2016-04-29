@@ -9,6 +9,7 @@ head
  link(href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet")
  script(src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous")
  script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous")
+ //- script(src='lodash.js')
  
  script(src='/javascripts/script.js' )
 
@@ -23,6 +24,7 @@ body
         .navbar-header
           button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navCollapse' aria-expanded='false')
             span.sr-only Toggle navigation
+            br
             span.icon-bar
             span.icon-bar
             span.icon-bar
@@ -31,7 +33,7 @@ body
 
         // Collect the nav links, forms, and other content for toggling
         #navCollapse.collapse.navbar-collapse
-          ul.nav.navbar-nav
+          ul.nav.navbar-nav.notLayout
             li
               a(href='/venues') Venues 
             li
@@ -42,7 +44,7 @@ body
               a(href='/contact') Contact  
 
             if(user)
-             li#bigProblem.dropdown.nav-pill
+             li#bigProblem.dropdown.nav-pill.nav-pill.notLayout
               a#yourAccount.dropdown-toggle.nav-pill(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
                 | Your Account 
                 span.caret
@@ -66,6 +68,11 @@ body
       // /.container-fluid
  
   div#notLayout.container-fluid
+    if(user)
+      div#welcome
+        h2 Welcome, #{user.username}
+      div#line
+        hr
     block content
 
  

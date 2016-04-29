@@ -9,6 +9,14 @@ router.use(helpers.currentUserVenueTableReservation);
 router.use(helpers.ensureAuth);
 
 
+// function prettyDate(dateString){
+//     var d = date.getDate(dateString);
+//     var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+//     var m = monthNames[date.getMonth()];
+//     var y = date.getFullYear();
+//     return d+' '+m+' '+y;
+// }
+
 //INDEX
 router.get('/', (req, res) => {
 	 knex('users').then((users) => {
@@ -37,7 +45,6 @@ router.get('/:id', (req, res) => {
 //EDIT
 router.get('/:id/edit', (req, res) => {
 	knex('users').where('id', req.params.id).first().then((user)=>{
-		// eval(locus)
 		res.render('users/edit', {user});
 	});
 });
@@ -55,8 +62,9 @@ router.patch('/', (req, res) => {
 
 //PUT
 router.put('/:id', (req, res) => {
-	knex('users').where('id', req.params.id).update({username: req.body.user.username, password: hash}).then(()=>{
-		res.redirect('/users');
+	var user = req.body.user;
+	knex('users').where('id', req.params.id).update({alias: user.alias, profile_pic: user.profile_pic, blurb: user.blurb}).then(()=>{
+		res.redirect(`/users/${req.params.id}`);
 	});
 });
 
@@ -64,8 +72,9 @@ router.put('/:id', (req, res) => {
 
 //DELETE
 router.delete('/:id', (req, res) => {
+	req.logout();
 	knex('users').del().where('id', req.params.id).then(()=>{
-		res.redirect('/users');
+		res.redirect('/venues');
 	});
 });
 
