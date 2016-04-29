@@ -24,6 +24,7 @@ body
         .navbar-header
           button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navCollapse' aria-expanded='false')
             span.sr-only Toggle navigation
+            br
             span.icon-bar
             span.icon-bar
             span.icon-bar
@@ -43,7 +44,7 @@ body
               a(href='/contact') Contact  
 
             if(user)
-             li#bigProblem.dropdown.nav-pill
+             li#bigProblem.dropdown.nav-pill.nav-pill
               a#yourAccount.dropdown-toggle.nav-pill(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
                 | Your Account 
                 span.caret
@@ -67,7 +68,10 @@ body
       // /.container-fluid
  
   div#notLayout.container-fluid
-    h2 Welcome, #{user.username}
+    div#welcome
+      h2 Welcome, #{user.username}
+    div#line
+      hr
     block content
 
  
