@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router({mergeParams: true});
 const knex = require('../db/knex');
 const helpers = require('../helpers/authHelpers');
-
+const moment = require('moment')
 
 require('locus')
 
@@ -62,12 +62,14 @@ router.get('/:id/edit', (req, res) => {
 
 //POST
 router.post('/', (req, res) => {
+	var now = new Date();
 	// eval(locus)
 	knex('reservations').insert({
 		table_id: +req.params.table_id,
 		user_id: +req.user.id,
 		pledge: +req.body.reservation.pledge,
-		seats: +req.body.reservation.seats 
+		seats: +req.body.reservation.seats,
+		date: moment(now).format('YYYY-MM-DD')
 	}).then(()=>{
 
 		knex('reservations').where('table_id', req.params.table_id).then(reservations=>{
