@@ -2,7 +2,7 @@
 html(lang="en")
 head
  meta(charset="UTF-8")
- title Document
+ title LonelyTable
 
  link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous")
  link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous")
@@ -29,11 +29,11 @@ body
             span.icon-bar
             span.icon-bar
 
-          a.navbar-brand(href='/') Lonely Table
+          a#navbarBrand.navbar-brand(href='/') LonelyTable
 
         // Collect the nav links, forms, and other content for toggling
         #navCollapse.collapse.navbar-collapse
-          ul.nav.navbar-nav
+          ul.nav.navbar-nav.notLayout
             li
               a(href='/venues') Venues 
             li
@@ -44,7 +44,7 @@ body
               a(href='/contact') Contact  
 
             if(user)
-             li#bigProblem.dropdown.nav-pill.nav-pill
+             li#bigProblem.dropdown.nav-pill.nav-pill.notLayout
               a#yourAccount.dropdown-toggle.nav-pill(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
                 | Your Account 
                 span.caret
@@ -63,7 +63,7 @@ body
              button#fb_icon.btn.btn-facebook
               a(href='/auth/facebook')
                //- i.fa.fa-facebook
-               |  | Sign in with Facebook
+               | Sign in with Facebook
         // /.navbar-collapse
       // /.container-fluid
  

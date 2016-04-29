@@ -80,14 +80,12 @@ block content
 					div.venueListDiv(class='row')
 						div.info(class='col col-sm-4')
 							h3 #{venue.name} 
-							p Location: #{venue.street_address}, #{venue.city}, #{venue.zipcode}
+							p #{venue.street_address}<br >#{venue.city} (#{venue.zipcode})
 							p Music: #{venue.music}
 							p Clientele: #{venue.clientele}
-							br
-							a(href='/venues/#{venue.id}/tables')
-								button#selectVenueBtn Select/Details
+							a.btn.btn-primary(href='/venues/#{venue.id}/tables', role='button') Find your table now
 						div.pic(class='col col-sm-8')
 							img.venueImg(src=venue.pic1)
 							div#yelp
 								img(src=venue.stars)
-								p # of reviews: #{venue.reviews}
+								p #{venue.reviews} reviews
