@@ -8,6 +8,11 @@ body {
     background-color: #3f0587;
     margin: 0 auto;
     color: #FFFFFF;
+    max-width: 900px;
+}
+
+.subTitle {
+  text-align: left;
 }
 
 .notLayout {
@@ -69,34 +74,46 @@ body {
 #siteNavBar {
   background:rgba(0,0,0,0.3);
   border-color: transparent;
+  color: #FFFFFF;
 }
 
 #selectVenueBtn {
 	margin-bottom: 15px;
 }
 
-#navBrand {
-  color:#FFFFFF;
+#navbarBrand {
+  color:#CCCCCC;
+}
+
+#navCollapse > ul > li > a {
+  color:#CCCCCC;
 }
 
 #carouselCaption {
   font-size: 100px;
+  font-size: 8vmax;
+  line-height: 1.0;
   font-weight: bold;
   display:table-cell;
-  vertical-align: middle;
-  text-align: center;
-	right: 5px;
+  margin:0 auto;
+  margin-bottom: 20px;
+  text-align:center;
 
 }
-
+  
+#map, #pano {
+  float: left;
+  height: 250px;
+  width: 50%;
+}
 
 
 /*	VENUES */
 
 #filterDiv {
-	background-color: rgba(0, 0, 255, 0.3);
+	background:rgba(0,0,0,0.3);
 	text-align: center;
-	border: black solid 3px;
+/*	border: black solid 3px;*/
 	margin-bottom: 10px;
 	/*display: -webkit-box;*/
 }
@@ -107,13 +124,13 @@ body {
 
 #venueInTables {
 	display: inline-block;
-	background-color: rgba(0, 0, 255, 0.7);
+	background:rgba(0,0,0,0.3);
 }
 
 .venueListDiv {
 	position: relative;
-	background-color: rgba(0, 0, 255, 0.2);
-	border: solid black 3px;
+	background:rgba(0,0,0,0.3);
+	/*border: solid black 3px;*/
 	width: 100%;
 	margin: 0 auto;
 	margin-bottom: 10px;
@@ -157,10 +174,11 @@ body {
 }
 
 #yelp {
-	background-color: black;
+	background-color: transparent;
 	display: inline-block;
 	position: absolute;
-	left: 15px;
+	left: 25px;
+  top: 10px;
 }
 
 /*	TABLES  */
