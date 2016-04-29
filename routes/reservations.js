@@ -72,7 +72,6 @@ router.get('/:id', (req, res) => {
 //EDIT
 router.get('/:id/edit', (req, res) => {
 	knex('reservations').where('id', req.params.id).first().then((reservation)=>{
-		// eval(locus)
 		res.render('reservations/edit', {reservation});
 	});
 });

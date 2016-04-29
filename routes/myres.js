@@ -21,7 +21,7 @@ router.get('/', (req, res)=>{
 
 					currentUsers.reduce((start, next)=>{
 						if (start.indexOf(next.user_id) === -1) {
-						// eval(locus)
+
 							atTable.push(next)
 							start.push(next.user_id);
 							return start;
@@ -30,7 +30,7 @@ router.get('/', (req, res)=>{
 							return start;
 						}
 					}, [])
-					// eval(locus)
+
 					res.render('myres/index', {atTable, venue, table, reservations})
 				});
 			})

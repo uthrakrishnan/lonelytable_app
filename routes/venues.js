@@ -17,7 +17,6 @@ router.get('/', (req, res) => {
 	 	knex('tables').then((tables) =>{
 	 		knex('venues').then(venues=>{
 	 			knex('hours').then(hours=>{
-	 				eval(locus);
 
 				
 					var music = venues.map(el=>{
@@ -77,7 +76,6 @@ router.get('/', (req, res) => {
 //FILTER
 //WILL NEED TO CORRECT MOST NAMES WITH ACTUAL DB TERMS
 router.get('/filter', (req, res) =>{
-eval(locus)
 	knex('venues').
 	knex('tables').whereRaw('seatsAvail >= ?', req.body.filter.seatNeeded).whereRaw('minCost <= ?', req.params.filter.maxPledge).where({
 		name: req.body.filter.name,

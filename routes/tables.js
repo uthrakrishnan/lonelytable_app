@@ -28,7 +28,6 @@ router.get('/:id', (req, res) => {
 //EDIT
 router.get('/:id/edit', (req, res) => {
 	knex('tables').where('id', req.params.id).first().then((table)=>{
-		// eval(locus)
 		res.render('tables/edit', {table});
 	});
 });
