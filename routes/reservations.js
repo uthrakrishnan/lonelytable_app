@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router({mergeParams: true});
 const knex = require('../db/knex');
 const helpers = require('../helpers/authHelpers');
-
+const moment = require('moment')
 
 require('locus')
 
@@ -67,7 +67,8 @@ router.post('/', (req, res) => {
 		table_id: +req.params.table_id,
 		user_id: +req.user.id,
 		pledge: +req.body.reservation.pledge,
-		seats: +req.body.reservation.seats 
+		seats: +req.body.reservation.seats,
+		created_at: moment(now).format('MM DD YY')
 	}).then(()=>{
 
 		knex('reservations').where('table_id', req.params.table_id).then(reservations=>{
@@ -80,7 +81,7 @@ router.post('/', (req, res) => {
 				if (peopleAtTable === table.maxCapacity) {
 					knex('tables').where('id', req.params.table_id).update({status: 'closed'}).then(()=>{
 						req.flash('newReservation', 'Added New reservation!');
-						res.redirect(`/venues/${req.params.venue_id}/tables/${req.params.table_id}/reservations`);
+						res.redirect(`/venues/${req.params.venue_id}/tables/`);
 					});
 				}
 			})
