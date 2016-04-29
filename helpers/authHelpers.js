@@ -34,11 +34,12 @@ module.exports = {
 		if(req.originalUrl === "/auth/facebook") {
 			return next();
 		}
-		if(req.isAuthenticated()){
+		else if(req.isAuthenticated()){
 
 			return next();
 		}
 		else{
+			req.session.returnTo = req.originalUrl;
 			req.flash('loginMessage', 'Please log in');
 			res.redirect('/auth/login');
 		}
