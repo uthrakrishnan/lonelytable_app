@@ -62,13 +62,14 @@ router.get('/:id/edit', (req, res) => {
 
 //POST
 router.post('/', (req, res) => {
+	var now = new Date();
 	// eval(locus)
 	knex('reservations').insert({
 		table_id: +req.params.table_id,
 		user_id: +req.user.id,
 		pledge: +req.body.reservation.pledge,
 		seats: +req.body.reservation.seats,
-		created_at: moment(now).format('MM DD YY')
+		date: moment(now).format('YYYY-MM-DD')
 	}).then(()=>{
 
 		knex('reservations').where('table_id', req.params.table_id).then(reservations=>{
@@ -81,7 +82,7 @@ router.post('/', (req, res) => {
 				if (peopleAtTable === table.maxCapacity) {
 					knex('tables').where('id', req.params.table_id).update({status: 'closed'}).then(()=>{
 						req.flash('newReservation', 'Added New reservation!');
-						res.redirect(`/venues/${req.params.venue_id}/tables/`);
+						res.redirect(`/venues/${req.params.venue_id}/tables/${req.params.table_id}/reservations`);
 					});
 				}
 			})
