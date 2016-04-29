@@ -45,7 +45,7 @@ router.get('/:id/edit', (req, res) => {
 //PATCH
 router.patch('/', (req, res) => {
 	var user = req.body.user;
-	knex('users').where('fb_id', user.fb_id).update({alias: user.alias, dob: moment(user.dob).format('MM DD YY'), profile_pic: user.profile_pic, blurb: user.blurb}).then(()=>{
+	knex('users').where('fb_id', user.fb_id).update({alias: user.alias, dob: user.dob, profile_pic: user.profile_pic, blurb: user.blurb}).then(()=>{
 		// req.flash('newUser', 'Added New User!');
 		res.redirect(req.session.returnTo || '/venues');
     delete req.session.returnTo;
@@ -55,8 +55,9 @@ router.patch('/', (req, res) => {
 
 //PUT
 router.put('/:id', (req, res) => {
-	knex('users').where('id', req.params.id).update({username: req.body.user.username, password: hash}).then(()=>{
-		res.redirect('/users');
+	var user = req.body.user;
+	knex('users').where('id', req.params.id).update({alias: user.alias, profile_pic: user.profile_pic, blurb: user.blurb}).then(()=>{
+		res.redirect(`/users/${req.params.id}`);
 	});
 });
 
