@@ -16,7 +16,7 @@ body {
 
 #bigProblem {
 	position: absolute;
-	right: 0;
+	right: 20px;
 }
 
 #newUser {
@@ -51,8 +51,8 @@ body {
   background-color: rgba(0,0,0,0.5);
 }
 
-/*#yourAccount, #yourAccount > .dropdown-menu {
-	right: 140px;
+/*#yourAccount, .dropdown-menu {
+	right: 15px;
 }*/
 
 #fb_icon {
@@ -94,7 +94,7 @@ body {
 /*	VENUES */
 
 #filterDiv {
-	background-color: rgba(0, 0, 255, 0.3);
+	background-color: rgba(200, 200, 200, 0.2);
 	text-align: center;
 	border: black solid 3px;
 	margin-bottom: 10px;
@@ -161,6 +161,23 @@ body {
 	display: inline-block;
 	position: absolute;
 	left: 15px;
+}
+
+#filterDiv  h4 {
+	color: black;
+}
+
+#filterDiv input {
+	color: black;
+}
+
+#filterDiv form form label {
+	color: black;
+}
+
+.reviewsCheckbox {
+	position: absolute;
+	right: 35px;
 }
 
 /*	TABLES  */

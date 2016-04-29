@@ -76,12 +76,16 @@ router.post('/', (req, res) => {
 				var peopleAtTable = reservations.reduce((start, next)=>{
 					return start += next.seats;
 				}, 0);
-				// eval(locus)
 				if (peopleAtTable === table.maxCapacity) {
+				eval(locus)
 					knex('tables').where('id', req.params.table_id).update({status: 'closed'}).then(()=>{
 						req.flash('newReservation', 'Added New reservation!');
 						res.redirect(`/venues/${req.params.venue_id}/tables/${req.params.table_id}/reservations`);
 					});
+				}
+				else {
+					req.flash('newReservation', 'Added New reservation!');
+					res.redirect(`/venues/${req.params.venue_id}/tables/${req.params.table_id}/reservations`);
 				}
 			})
 
