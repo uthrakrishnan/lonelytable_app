@@ -16,53 +16,57 @@ router.get('/', (req, res) => {
 	 	// eval(locus)
 	 	knex('tables').then((tables) =>{
 	 		knex('venues').then(venues=>{
+	 			knex('hours').then(hours=>{
+	 				eval(locus);
+
 				
-				var music = venues.map(el=>{
-					return el.music.split(',');
+					var music = venues.map(el=>{
+						return el.music.split(',');
+					})
+					
+					var musicList = []
+
+					music.forEach( n=>{
+						return n.forEach(el=>{
+							return musicList.push(el.replace(' ', ''))
+						});
+					})
+					var musicFiltered = musicList.reduce((start, next)=>{
+						// eval(locus)
+						if (start.indexOf(next) === -1) {
+							start.push(next)
+						}
+
+						return start;
+						}, [''])
+
+
+					var clientele = venues.map(el=>{
+						return el.clientele.split(',');
+					})
+					
+					var clienteleList = []
+
+					clientele.forEach( n=>{
+						return n.forEach(el=>{
+							return clienteleList.push(el.replace(' ', ''))
+						});
+					})
+					var clienteleFiltered = clienteleList.reduce((start, next)=>{
+						// eval(locus)
+						if (start.indexOf(next) === -1) {
+							start.push(next)
+						}
+
+						return start;
+						}, [''])
+					
+					var venuesFilter = venues.slice(0, venues.length);
+
+					venuesFilter.unshift(' ');
+					
+					res.render('venues/index', {venues, venuesFilter, tables, musicFiltered, clienteleFiltered});
 				})
-				
-				var musicList = []
-
-				music.forEach( n=>{
-					return n.forEach(el=>{
-						return musicList.push(el.replace(' ', ''))
-					});
-				})
-				var musicFiltered = musicList.reduce((start, next)=>{
-					// eval(locus)
-					if (start.indexOf(next) === -1) {
-						start.push(next)
-					}
-
-					return start;
-					}, [''])
-
-
-				var clientele = venues.map(el=>{
-					return el.clientele.split(',');
-				})
-				
-				var clienteleList = []
-
-				clientele.forEach( n=>{
-					return n.forEach(el=>{
-						return clienteleList.push(el.replace(' ', ''))
-					});
-				})
-				var clienteleFiltered = clienteleList.reduce((start, next)=>{
-					// eval(locus)
-					if (start.indexOf(next) === -1) {
-						start.push(next)
-					}
-
-					return start;
-					}, [''])
-				
-				var venuesFilter = venues.slice(0, venues.length);
-
-				venuesFilter.unshift(' ');
-				
-				res.render('venues/index', {venues, venuesFilter, tables, musicFiltered, clienteleFiltered});
 	 		})
 	 	})
 	});
