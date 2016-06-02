@@ -3,7 +3,7 @@ const knex = require('../db/knex');
 require('locus')
 
 module.exports = {
-	currentUserVenueTableReservation: (req, res, next) => {
+	currentUserVenueTableReservation: (req, res, next) => { 
 		if(!req.isAuthenticated()) {
 			return next();
 		}
