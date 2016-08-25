@@ -20,9 +20,9 @@ router.get('/', (req, res) => {
 });
 
 //NEW
-router.get('/new', (req, res) => {
-	res.render('users/new');
-});
+// router.get('/new', (req, res) => {
+// 	res.render('users/new');
+// });
 
 //SHOW
 router.get('/:id', (req, res) => {
