@@ -6,3 +6,20 @@ Sign on via Facebook to reserve your seat at a table tonight in San Francisco! N
 
 **Home Page**
 ![HomePage](https://github.com/uthrakrishnan/lonelytable_app/blob/master/public/images/homePage.png)
+
+**Venues Page** 
+See all the venues that we work with.
+![Venues](https://github.com/uthrakrishnan/lonelytable_app/blob/master/public/images/venues.png)
+
+**Venue Specific Page**
+View venue specific information including open tables, map location, and inside views using Google Maps.
+![Origin SF](https://github.com/uthrakrishnan/lonelytable_app/blob/master/public/images/originSF.png)
+
+**User Profile Page**
+View and manage your profile
+![Profile Page](https://github.com/uthrakrishnan/lonelytable_app/blob/master/public/images/profilepage.png)
+
+**Reservations Page**
+View and manage your reservations
+![Reservation Page](https://github.com/uthrakrishnan/lonelytable_app/blob/master/public/images/reservation.png)
+
